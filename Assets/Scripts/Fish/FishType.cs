@@ -4,22 +4,26 @@ using UnityEngine;
 public class FishType : ScriptableObject
 {
 	[SerializeField]
-	private string Name;
+	private string fishName;
 	[SerializeField]
-	private Vector2 Difficulty;
+	private Vector2 difficulty;
 	[SerializeField]
-	private int ExcludedMinigames;
+	private int excludedMinigames;
 	[SerializeField]
-	private Sprite Sprite;
+	private Sprite sprite;
 	[SerializeField]
-	private Vector2 Longueur;
+	private Vector2 length;
 	[SerializeField]
-	private Vector2 Largeur;
+	private Vector2 width;
+	// m/s
+	[SerializeField]
+	private Vector2 speed;
 
-	public FishData GenerateFish() {
-		float diff = Random.Range(Difficulty.x, Difficulty.y);
-		float longueur = Random.Range(Longueur.x, Longueur.y);
-		float larg = Random.Range(Largeur.x, Largeur.y);
-		return new FishData(Name, diff, ExcludedMinigames, Sprite, longueur, larg);
+	public FishData GenerateFishData() {
+		float diff = Random.Range(difficulty.x, difficulty.y);
+		float len = Random.Range(length.x, length.y);
+		float wdth = Random.Range(width.x, width.y);
+		float spd = Random.Range(speed.x, speed.y);
+		return new FishData(fishName, diff, excludedMinigames, sprite, len, wdth, spd);
 	}
 }
