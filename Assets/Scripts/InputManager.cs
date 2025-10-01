@@ -5,6 +5,9 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
+    public InputAction RightJoystick { get; private set; }
+    public InputAction LeftJoystick { get; private set; }
+
     public InputAction NorthButtonAction { get; private set; }
     public InputAction EastButtonAction { get; private set; }
     public InputAction SouthButtonAction { get; private set; }
@@ -28,11 +31,12 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
+        RightJoystick = playerInput.actions["RightJoystick"];
+        LeftJoystick = playerInput.actions["LeftJoystick"];
+
         NorthButtonAction = playerInput.actions["NorthButton"];
         EastButtonAction = playerInput.actions["EastButton"];
         SouthButtonAction = playerInput.actions["SouthButton"];
         WestButtonAction = playerInput.actions["WestButton"];
-
-        NorthButtonAction.performed += ctx => Debug.Log("North Button Pressed");
     }
 }
