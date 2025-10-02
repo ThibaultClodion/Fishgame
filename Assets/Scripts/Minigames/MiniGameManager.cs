@@ -19,6 +19,8 @@ public class MiniGameManager : MonoBehaviour
         progressionSlider.value = 0;
         progressionSlider.gameObject.SetActive(true);
 
+        Debug.Log("Launching MiniGame "+miniGames[index]);
+
         miniGames[index].gameObject.SetActive(true);
         miniGames[index].OnAddToProgression += AddToProgression;
         miniGames[index].Initialize();

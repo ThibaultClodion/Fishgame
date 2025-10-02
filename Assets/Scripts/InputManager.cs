@@ -13,6 +13,9 @@ public class InputManager : MonoBehaviour
     public InputAction SouthButtonAction { get; private set; }
     public InputAction WestButtonAction { get; private set; }
 
+    // Array of all buttons, used for QTE
+    public InputAction[] ButtonActions { get; private set; }
+
 
     [SerializeField] private PlayerInput playerInput;
 
@@ -38,5 +41,12 @@ public class InputManager : MonoBehaviour
         EastButtonAction = playerInput.actions["EastButton"];
         SouthButtonAction = playerInput.actions["SouthButton"];
         WestButtonAction = playerInput.actions["WestButton"];
+
+        // Fill the array
+        ButtonActions = new InputAction[4];
+        ButtonActions[0] = NorthButtonAction;
+        ButtonActions[1] = EastButtonAction;
+        ButtonActions[2] = SouthButtonAction;
+        ButtonActions[3] = WestButtonAction;
     }
 }

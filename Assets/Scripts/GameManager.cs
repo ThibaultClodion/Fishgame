@@ -44,5 +44,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Mini-game failed.");
         }
+
+        // Continue starting mini-games for testing purposes
+        StartMiniGame();
     }
 }

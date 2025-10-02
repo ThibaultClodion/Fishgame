@@ -32,7 +32,7 @@ public class Fish : MonoBehaviour
 	// Destroys itself and returns data
 	public FishData Catch() {
 		// Queue for destruction
-		Destroy(this);
+		Destroy(gameObject);
 		// Return data
 		return this.data;
 	}

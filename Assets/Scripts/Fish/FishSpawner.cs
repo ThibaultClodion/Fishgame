@@ -5,6 +5,11 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour
 {
 	[SerializeField]
+	[Tooltip("All the possible fish type spawns")]
+	private FishType[] fishTypes;
+
+	[Header("Spawned Fish Settings")]
+	[SerializeField]
 	[Tooltip("The fish prefab (requires Fish component)")]
 	private GameObject fishPrefab;
 
@@ -12,10 +17,7 @@ public class FishSpawner : MonoBehaviour
 	[Tooltip("The direction in which fish will swim")]
 	private Vector2 fishSwimDirection;
 
-	[SerializeField]
-	[Tooltip("All the possible fish type spawns")]
-	private FishType[] fishTypes;
-
+	[Header("Spawn Times")]
 	[SerializeField]
 	[Tooltip("Time between spawn in ms")]
 	[Range(0,2000)]
