@@ -79,7 +79,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "RightJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -101,7 +101,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "LeftJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false

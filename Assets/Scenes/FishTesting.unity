@@ -488,9 +488,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1130420441}
     m_Modifications:
+    - target: {fileID: 1359318998841483557, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359318998841483557, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359318998841483557, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359318998841483557, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3796643260489356182, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_Name
       value: MiniGameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796643260489356182, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879113817119264254, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9110411897615873624, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_Pivot.x

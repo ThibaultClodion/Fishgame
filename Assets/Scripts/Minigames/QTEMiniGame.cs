@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class QTEMiniGame : BaseMiniGame
@@ -14,6 +15,12 @@ public class QTEMiniGame : BaseMiniGame
 	private float progressionDecrease = 0.1f;
 	[SerializeField]
 	private float progressionAutoDecreaseRate = 0.01f;
+
+	[Header("Object References")]
+	[SerializeField]
+	private Slider timeSlider;
+	[SerializeField]
+	private DynamicKeyImage keyImage;
 
 	// Index of currently selected random action to push
 	private int currentButton;
@@ -33,7 +40,16 @@ public class QTEMiniGame : BaseMiniGame
 		currentButton = Random.Range(0, InputManager.Instance.ButtonActions.Length-1);
 		nextButtonTime = Time.time + timeBetweenButtons;
 		failTime = Time.time + buttonFailTime;
-		Debug.Log("Press " + InputManager.Instance.ButtonActions[currentButton]);
+		keyImage.SetAction(InputManager.Instance.ButtonActions[currentButton]);
+		keyImage.gameObject.SetActive(true);
+		timeSlider.gameObject.SetActive(true);
+		timeSlider.value = 1.0f;
+	}
+
+	private void ClearButton() {
+		currentButton = -1;
+		keyImage.gameObject.SetActive(false);
+		timeSlider.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -42,6 +58,8 @@ public class QTEMiniGame : BaseMiniGame
 
 		if (Time.time >= nextButtonTime)
 			PickNextButton();
+
+		timeSlider.value = (failTime - Time.time) / buttonFailTime;
 
 		if (currentButton == -1)
 			return;
@@ -61,13 +79,11 @@ public class QTEMiniGame : BaseMiniGame
 		}
 
 		if (Time.time >= failTime || pressedOtherButton) {
-			Debug.Log("Failed");
 			GetOnAddToProgression()?.Invoke(-progressionDecrease);
-			currentButton = -1;
+			ClearButton();
 		} else if (pressedRightButton) {
-			Debug.Log("Nice");
 			GetOnAddToProgression()?.Invoke(progressionIncrease);
-			currentButton = -1;
+			ClearButton();
 		}
 	}
 }

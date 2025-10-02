@@ -46,6 +46,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 4345233516351562775}
+  UsingKeyboard: 0
+  keyInfos:
+  - type: 0
+    images:
+      keyboard: {fileID: 2773642735378788190, guid: b5a6cd271352cbc41ac01619b275c39e, type: 3}
+      gamepad: {fileID: 3764963013011128044, guid: 9abd1de42248810499dc1ce4ccbc727c, type: 3}
+  - type: 1
+    images:
+      keyboard: {fileID: 2773642735378788190, guid: b5a6cd271352cbc41ac01619b275c39e, type: 3}
+      gamepad: {fileID: 867481952111324896, guid: 08e0a8d7d9bf0704c955c66f0f6f5303, type: 3}
+  - type: 2
+    images:
+      keyboard: {fileID: 1508643249372147243, guid: 6dba722928e55fc4bb1d76b4ef86e0bf, type: 3}
+      gamepad: {fileID: 8991203637189458632, guid: 8823f352d2b89f64386ef825de6ba341, type: 3}
+  - type: 3
+    images:
+      keyboard: {fileID: -386565920317582001, guid: 1aba80ff6c129a2418cd1d63f68678da, type: 3}
+      gamepad: {fileID: 6333945353758694606, guid: faf0753afd6aedf4e843abeb37ed20b0, type: 3}
+  - type: 4
+    images:
+      keyboard: {fileID: -2664367747753346069, guid: e44e2d6d9c6c88f45be0501621480e0d, type: 3}
+      gamepad: {fileID: 5276158703152952152, guid: 409af5134d8dfec4a9d320468cac2a74, type: 3}
+  - type: 5
+    images:
+      keyboard: {fileID: -236659370788231668, guid: dab9ecc4802f87f4c93037d4314ede60, type: 3}
+      gamepad: {fileID: 8483132747858923957, guid: b2a406f7419686e488daa4ae45986bfe, type: 3}
 --- !u!114 &4345233516351562775
 MonoBehaviour:
   m_ObjectHideFlags: 0
