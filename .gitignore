@@ -77,3 +77,6 @@ crashlytics-build.properties
 
 # Sublime Text
 *.sublime-workspace
+
+#Visual Studio
+.editorconfig

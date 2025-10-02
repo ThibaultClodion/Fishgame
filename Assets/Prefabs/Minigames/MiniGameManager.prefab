@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGames:
   - {fileID: 4745116713554971131}
-  sucessSlider: {fileID: 4116224861054744235}
+  progressionSlider: {fileID: 4116224861054744235}
 --- !u!1 &4104380224698020391
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a8537886714e147ab3a8b4f8594608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressionDecreaseRate: 0.05
+  progressionIncreaseRate: 0.0001
 --- !u!1001 &7748193570803493002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,11 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558601385546716486, guid: 2f22302b4cf576748a2d736852dc0cce, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5074727019511388739, guid: 2f22302b4cf576748a2d736852dc0cce, type: 3}
       propertyPath: m_Name
       value: Slider - Success
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074727019511388739, guid: 2f22302b4cf576748a2d736852dc0cce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
