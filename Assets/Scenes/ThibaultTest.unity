@@ -526,6 +526,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9110411897615873624, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
   m_PrefabInstance: {fileID: 8890852649286729337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1689664166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2734320459321275187, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4ea4d8026baae4491a463d948ade53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1965304237846608766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -574,6 +585,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3717791616507617324, guid: 257f544fc34bdd741bb3285f8a9c2db0, type: 3}
+      propertyPath: miniGameManager
+      value: 
+      objectReference: {fileID: 1689664166}
     - target: {fileID: 4213663046349389952, guid: 257f544fc34bdd741bb3285f8a9c2db0, type: 3}
       propertyPath: m_Name
       value: GameManager

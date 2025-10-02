@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private MiniGameManager miniGameManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -14,6 +16,33 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
+        }
+    }
+
+    private void Start()
+    {
+        // For testing purposes, start a mini-game immediately
+        StartMiniGame();
+    }
+
+    private void StartMiniGame()
+    {
+        miniGameManager.gameObject.SetActive(true);
+        miniGameManager.StartRandomMiniGame();
+    }
+
+    public void EndMiniGame(bool isCompleted)
+    {
+        miniGameManager.gameObject.SetActive(false);
+
+        // TODO : Handle post-mini-game logic here (e.g., rewards, penalties)
+        if (isCompleted)
+        {
+            Debug.Log("Mini-game successfully completed!");
+        }
+        else
+        {
+            Debug.Log("Mini-game failed.");
         }
     }
 }

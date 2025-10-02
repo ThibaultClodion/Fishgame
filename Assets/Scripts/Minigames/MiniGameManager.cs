@@ -6,9 +6,12 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] private BaseMiniGame[] miniGames;
     [SerializeField] private Slider progressionSlider;
 
-    private void Start()
+    private int currentMiniGameIndex = -1;
+
+    public void StartRandomMiniGame()
     {
-        StartMiniGame(0);
+        int randomIndex = Random.Range(0, miniGames.Length);
+        StartMiniGame(randomIndex);
     }
 
     private void StartMiniGame(int index)
@@ -19,16 +22,29 @@ public class MiniGameManager : MonoBehaviour
         miniGames[index].gameObject.SetActive(true);
         miniGames[index].OnAddToProgression += AddToProgression;
         miniGames[index].Initialize();
+        currentMiniGameIndex = index;
     }
 
-    private void EndMiniGame(int index)
+    private void EndMiniGame(bool isCompleted)
     {
-        miniGames[index].gameObject.SetActive(false);
-        miniGames[index].OnAddToProgression -= AddToProgression;
+        miniGames[currentMiniGameIndex].gameObject.SetActive(false);
+        miniGames[currentMiniGameIndex].OnAddToProgression -= AddToProgression;
+        currentMiniGameIndex = -1;
+
+        GameManager.Instance.EndMiniGame(isCompleted);
     }
 
     private void AddToProgression(float value)
     {
         progressionSlider.value += value;
+
+        if(progressionSlider.value >= 1f)
+        {
+            EndMiniGame(true);
+        }
+        else if(progressionSlider.value <= 0f)
+        {
+            EndMiniGame(false);
+        }
     }
 }
