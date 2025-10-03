@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 4345233516351562775}
-  UsingKeyboard: 0
   keyInfos:
   - type: 0
     images:
@@ -72,6 +71,10 @@ MonoBehaviour:
     images:
       keyboard: {fileID: -236659370788231668, guid: dab9ecc4802f87f4c93037d4314ede60, type: 3}
       gamepad: {fileID: 8483132747858923957, guid: b2a406f7419686e488daa4ae45986bfe, type: 3}
+  - type: 6
+    images:
+      keyboard: {fileID: -8442897585661458078, guid: 900c4639d19244844a289e05b0eefd75, type: 3}
+      gamepad: {fileID: 226166774298149191, guid: 8364164e65a279749a05804e7f40f4d8, type: 3}
 --- !u!114 &4345233516351562775
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,4 +10,6 @@ public class BaseMiniGame : MonoBehaviour
     {
         OnAddToProgression?.Invoke(0.2f);
     }
+
+    public virtual void Disable() {}
 }

@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     public InputAction EastButtonAction { get; private set; }
     public InputAction SouthButtonAction { get; private set; }
     public InputAction WestButtonAction { get; private set; }
+    public InputAction RightTrigger { get; private set; }
 
     // Array of all buttons, used for QTE
     public InputAction[] ButtonActions { get; private set; }
@@ -39,7 +40,8 @@ public class InputManager : MonoBehaviour
         NorthButton,
         EastButton,
         SouthButton,
-        WestButton
+        WestButton,
+        RightTrigger
     };
 
     public Dictionary<KeyType, KeyImage> KeyImages { get; private set; }
@@ -76,6 +78,7 @@ public class InputManager : MonoBehaviour
         EastButtonAction = playerInput.actions["EastButton"];
         SouthButtonAction = playerInput.actions["SouthButton"];
         WestButtonAction = playerInput.actions["WestButton"];
+        RightTrigger = playerInput.actions["RightTrigger"];
 
         // Fill the array
         ButtonActions = new InputAction[4];
@@ -92,6 +95,7 @@ public class InputManager : MonoBehaviour
         KeyTypes.Add(EastButtonAction, KeyType.EastButton);
         KeyTypes.Add(SouthButtonAction, KeyType.SouthButton);
         KeyTypes.Add(WestButtonAction, KeyType.WestButton);
+        KeyTypes.Add(RightTrigger, KeyType.RightTrigger);
 
         KeyImages = new Dictionary<KeyType, KeyImage>();
         // Unity doodoo

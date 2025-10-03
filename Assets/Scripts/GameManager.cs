@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private MiniGameManager miniGameManager;
+    [SerializeField] private Angler angler;
 
     private void Awake()
     {
@@ -17,6 +18,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+
+    private void Start()
+    {
+        StartAngling();
+    }
+
+    private void StartAngling()
+    {
+        angler.gameObject.SetActive(true);
     }
 
     private void StartMiniGame()

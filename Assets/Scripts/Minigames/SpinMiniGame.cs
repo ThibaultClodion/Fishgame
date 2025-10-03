@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 
 public class SpinMiniGame : BaseMiniGame
 {
-    public InputAction RightJoystick { get; private set; }
-
     [Header("Spin Mini Game Settings")]
     [SerializeField] private bool isClockwise = true;
     [SerializeField] private float progressionDecreaseRate = 0.05f;
@@ -16,8 +14,13 @@ public class SpinMiniGame : BaseMiniGame
     {
         base.Initialize();
 
-        RightJoystick = InputManager.Instance.RightJoystick;
-        RightJoystick.performed += RightJoystickMove;
+        InputManager.Instance.RightJoystick.performed += RightJoystickMove;
+    }
+
+    public override void Disable()
+    {
+        InputManager.Instance.RightJoystick.performed -= RightJoystickMove;
+        lastJoystickPosition = Vector2.zero;
     }
 
     private void Update()

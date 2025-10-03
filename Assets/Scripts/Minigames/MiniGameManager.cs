@@ -31,6 +31,7 @@ public class MiniGameManager : MonoBehaviour
     {
         miniGames[currentMiniGameIndex].gameObject.SetActive(false);
         miniGames[currentMiniGameIndex].OnAddToProgression -= AddToProgression;
+        miniGames[currentMiniGameIndex].Disable();
         currentMiniGameIndex = -1;
 
         GameManager.Instance.EndMiniGame(isCompleted);
