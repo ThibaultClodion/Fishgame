@@ -19,12 +19,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        // For testing purposes, start a mini-game immediately
-        StartMiniGame();
-    }
-
     private void StartMiniGame()
     {
         miniGameManager.gameObject.SetActive(true);
@@ -44,8 +38,5 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Mini-game failed.");
         }
-
-        // Continue starting mini-games for testing purposes
-        StartMiniGame();
     }
 }
