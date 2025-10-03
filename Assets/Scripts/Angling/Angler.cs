@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Angler : MonoBehaviour
 {
+    [SerializeField] private Harpoon harpoon;
     [SerializeField] private DynamicKeyImage keyImage;
     private Vector2 aimingDirection;
 
@@ -26,51 +27,26 @@ public class Angler : MonoBehaviour
 
     private void StartAngling(InputAction.CallbackContext ctx)
     {
-        if(InputManager.Instance.UsingKeyboard)
-        {
-            // Ignore keyboard input for angling
-            return;
-        }
-
         keyImage.gameObject.SetActive(true);
     }
 
     private void UpdateAngling(InputAction.CallbackContext ctx)
     {
-        if (InputManager.Instance.UsingKeyboard)
-        {
-            // Ignore keyboard input for angling
-            return;
-        }
-
         aimingDirection = ctx.ReadValue<Vector2>();
+        harpoon.Rotate(aimingDirection);
     }
 
     private void CancelAngling(InputAction.CallbackContext ctx)
     {
-        if (InputManager.Instance.UsingKeyboard)
-        {
-            // Ignore keyboard input for angling
-            return;
-        }
-
-        Debug.Log("Cancelling Angling!");
-
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
     }
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
-        if (InputManager.Instance.UsingKeyboard)
-        {
-            // Ignore keyboard input for angling
-            return;
-        }
-
-        Debug.Log("Launching Harpoon! on direction " + aimingDirection);
-
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
+
+        Debug.Log("Launching Harpoon! on direction " + aimingDirection);
     }
 }
