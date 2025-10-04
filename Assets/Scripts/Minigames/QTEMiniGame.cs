@@ -28,9 +28,9 @@ public class QTEMiniGame : BaseMiniGame
 	// Time at which the next button will be given
 	private float nextButtonTime;
 
-	public override void Initialize()
+	public override void Initialize(FishData data)
 	{
-		base.Initialize();
+		base.Initialize(data);
 		// Pick the next button 
 		PickNextButton();
 	}
@@ -53,7 +53,7 @@ public class QTEMiniGame : BaseMiniGame
 
 	// Update is called once per frame
 	private void Update() {
-		GetOnAddToProgression()?.Invoke(-progressionAutoDecreaseRate * Time.deltaTime);
+		AddToProgression(-progressionAutoDecreaseRate * Time.deltaTime);
 
 		if (Time.time >= nextButtonTime)
 			PickNextButton();
@@ -78,10 +78,10 @@ public class QTEMiniGame : BaseMiniGame
 		}
 
 		if (Time.time >= failTime || pressedOtherButton) {
-			GetOnAddToProgression()?.Invoke(-progressionDecrease);
+			AddToProgression(-progressionDecrease);
 			ClearButton();
 		} else if (pressedRightButton) {
-			GetOnAddToProgression()?.Invoke(progressionIncrease);
+			AddToProgression(progressionIncrease);
 			ClearButton();
 		}
 	}

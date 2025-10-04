@@ -8,13 +8,13 @@ public class MiniGameManager : MonoBehaviour
 
     private int currentMiniGameIndex = -1;
 
-    public void StartRandomMiniGame()
+    public void StartRandomMiniGame(FishData data)
     {
         int randomIndex = Random.Range(0, miniGames.Length);
-        StartMiniGame(randomIndex);
+        StartMiniGame(randomIndex, data);
     }
 
-    private void StartMiniGame(int index)
+    private void StartMiniGame(int index, FishData data)
     {
         progressionSlider.value = 0;
         progressionSlider.gameObject.SetActive(true);
@@ -22,16 +22,16 @@ public class MiniGameManager : MonoBehaviour
         Debug.Log("Launching MiniGame "+miniGames[index]);
 
         miniGames[index].gameObject.SetActive(true);
-        miniGames[index].OnAddToProgression += AddToProgression;
-        miniGames[index].Initialize();
+        miniGames[index].AddToProgressionCallback = AddToProgression;
+        miniGames[index].Initialize(data);
         currentMiniGameIndex = index;
     }
 
     private void EndMiniGame(bool isCompleted)
     {
-        miniGames[currentMiniGameIndex].gameObject.SetActive(false);
-        miniGames[currentMiniGameIndex].OnAddToProgression -= AddToProgression;
         miniGames[currentMiniGameIndex].Disable();
+        miniGames[currentMiniGameIndex].gameObject.SetActive(false);
+        miniGames[currentMiniGameIndex].AddToProgressionCallback = null;
         currentMiniGameIndex = -1;
 
         GameManager.Instance.EndMiniGame(isCompleted);

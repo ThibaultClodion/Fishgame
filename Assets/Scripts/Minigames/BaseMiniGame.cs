@@ -1,14 +1,26 @@
 using System;
 using UnityEngine;
 
-public class BaseMiniGame : MonoBehaviour
+public abstract class BaseMiniGame : MonoBehaviour
 {
-    public event Action<float> OnAddToProgression;
-    public Action<float> GetOnAddToProgression() => OnAddToProgression;
+    public delegate void AddToProgressionDelegate(float value);
+    // Not an event because there is always only one
+    public AddToProgressionDelegate AddToProgressionCallback;
 
-    public virtual void Initialize()
+    // Wrap the callback to avoid NPEs (shouldn't happen but just in case)
+    public void AddToProgression(float value)
     {
-        OnAddToProgression?.Invoke(0.2f);
+        if (AddToProgressionCallback == null)
+        {
+            Debug.LogError("Tried to add to progression when CB was null...");
+            return;
+        }
+        AddToProgressionCallback(value);
+    }
+
+    public virtual void Initialize(FishData data)
+    {
+        AddToProgression(0.2f);
     }
 
     public virtual void Disable() {}

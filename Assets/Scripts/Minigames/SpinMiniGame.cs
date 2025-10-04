@@ -10,9 +10,9 @@ public class SpinMiniGame : BaseMiniGame
 
     private Vector2 lastJoystickPosition;
 
-    public override void Initialize()
+    public override void Initialize(FishData data)
     {
-        base.Initialize();
+        base.Initialize(data);
 
         InputManager.Instance.RightJoystick.performed += RightJoystickMove;
     }
@@ -25,7 +25,7 @@ public class SpinMiniGame : BaseMiniGame
 
     private void Update()
     {
-        GetOnAddToProgression()?.Invoke(-progressionDecreaseRate * Time.deltaTime);
+        AddToProgression(-progressionDecreaseRate * Time.deltaTime);
     }
 
     private void RightJoystickMove(InputAction.CallbackContext callbackContext)
@@ -46,11 +46,11 @@ public class SpinMiniGame : BaseMiniGame
         // Only increase progression if the joystick is moved in the correct direction
         if (isClockwise && angleDifference < 0)
         {
-            GetOnAddToProgression()?.Invoke(progressionIncreaseRate * -angleDifference);
+            AddToProgression(progressionIncreaseRate * -angleDifference);
         }
         else if(!isClockwise && angleDifference > 0)
         {
-            GetOnAddToProgression()?.Invoke(progressionIncreaseRate * angleDifference);
+            AddToProgression(progressionIncreaseRate * angleDifference);
         }
     }
 }

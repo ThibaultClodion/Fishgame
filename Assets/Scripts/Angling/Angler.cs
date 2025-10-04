@@ -9,6 +9,9 @@ public class Angler : MonoBehaviour
     private Vector2 aimingDirection;
     private bool canAngle = false;
 
+    // TODO: fix bug with when using mouse and starting angling for the second time (maybe use polling rather than events ?)
+    // as the mouse is a bit more fucky when it comes to started events
+
     private void OnEnable()
     {
         InputManager.Instance.LeftJoystick.started += StartAngling;

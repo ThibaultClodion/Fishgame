@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 using System.Collections.Generic;
 
+[RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
@@ -14,12 +15,13 @@ public class InputManager : MonoBehaviour
     public InputAction EastButtonAction { get; private set; }
     public InputAction SouthButtonAction { get; private set; }
     public InputAction WestButtonAction { get; private set; }
+
     public InputAction RightTrigger { get; private set; }
 
     // Array of all buttons, used for QTE
     public InputAction[] ButtonActions { get; private set; }
 
-    [SerializeField] private PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     // Can either poll the variable
     public bool UsingKeyboard {get; set;}
@@ -71,6 +73,8 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+
         RightJoystick = playerInput.actions["RightJoystick"];
         LeftJoystick = playerInput.actions["LeftJoystick"];
 

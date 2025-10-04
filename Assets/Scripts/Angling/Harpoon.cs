@@ -19,12 +19,9 @@ public class Harpoon : MonoBehaviour
 
     public void Rotate(Vector2 aimingDirection)
     {
-        float angle = Mathf.Atan2(aimingDirection.y, aimingDirection.x) * Mathf.Rad2Deg + 90;
+        float angle = -Vector2.SignedAngle(aimingDirection, Vector2.down);
 
-        if (Mathf.Abs(angle) - angleLimit > 0)
-        {
-            return;
-        }
+        angle = Mathf.Clamp(angle, -angleLimit, angleLimit);
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
@@ -36,6 +33,7 @@ public class Harpoon : MonoBehaviour
         if (hit.collider != null)
         {
             FishData fishData = hit.collider.GetComponent<Fish>().Catch();
+            GameManager.Instance.CatchFish(fishData);
         }
 
         Reset();

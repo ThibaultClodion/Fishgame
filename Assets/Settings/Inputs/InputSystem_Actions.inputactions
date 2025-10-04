@@ -85,9 +85,9 @@
                 {
                     "name": "",
                     "id": "d0f20bd6-72bd-490f-9e0f-221febfd8f13",
-                    "path": "<Mouse>/delta",
+                    "path": "<Mouse>/position",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "MouseGamepadEmulator",
                     "groups": ";Keyboard&Mouse",
                     "action": "RightJoystick",
                     "isComposite": false,
@@ -107,9 +107,9 @@
                 {
                     "name": "",
                     "id": "6f39c45e-c483-44df-8e18-64392ba92fe1",
-                    "path": "<Mouse>/delta",
+                    "path": "<Mouse>/position",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "MouseGamepadEmulator",
                     "groups": ";Keyboard&Mouse",
                     "action": "LeftJoystick",
                     "isComposite": false,
