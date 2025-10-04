@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc84295868c946458747a5fe73c61df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  harpoonCollider: {fileID: 4894350513054598745}
+  target: {fileID: 3817728279792945388}
   angleLimit: 70
 --- !u!1 &3817728279792945388
 GameObject:
@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3762551685059441428
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Angler : MonoBehaviour
     [SerializeField] private DynamicKeyImage keyImage;
 
     private Vector2 aimingDirection;
+    private bool canAngle = false;
 
     private void OnEnable()
     {
@@ -28,17 +29,24 @@ public class Angler : MonoBehaviour
 
     private void StartAngling(InputAction.CallbackContext ctx)
     {
+        canAngle = true;
         keyImage.gameObject.SetActive(true);
+        harpoon.Initialize();
     }
 
     private void UpdateAngling(InputAction.CallbackContext ctx)
     {
+        if(!canAngle)
+            return;
+
         aimingDirection = ctx.ReadValue<Vector2>();
         harpoon.Rotate(aimingDirection);
     }
 
     private void CancelAngling(InputAction.CallbackContext ctx)
     {
+        canAngle = false;
+
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
         harpoon.Reset();
@@ -46,6 +54,8 @@ public class Angler : MonoBehaviour
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
+        canAngle = false;
+
         harpoon.Shoot(aimingDirection);
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
