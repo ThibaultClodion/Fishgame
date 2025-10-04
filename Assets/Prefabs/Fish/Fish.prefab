@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2070525111166188533}
   - component: {fileID: 7407598215990622645}
-  - component: {fileID: 5572154499528234802}
+  - component: {fileID: 2973504012625024666}
   - component: {fileID: 2819366522614631978}
   - component: {fileID: 5156072241161261990}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5572154499528234802
+--- !u!61 &2973504012625024666
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
 --- !u!50 &2819366522614631978
 Rigidbody2D:

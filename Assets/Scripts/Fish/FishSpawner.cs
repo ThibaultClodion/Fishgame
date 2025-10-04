@@ -35,8 +35,8 @@ public class FishSpawner : MonoBehaviour
 	private float nextSpawnTime;
 
 	void Spawn() {
-		// Sanity Check
-		if (fishPrefab == null) {
+        // Sanity Check
+        if (fishPrefab == null) {
 			Debug.LogError("No Fish Prefab for Spawner");
 			nextSpawnTime = float.PositiveInfinity;
 			return;

@@ -5,6 +5,7 @@ public class Angler : MonoBehaviour
 {
     [SerializeField] private Harpoon harpoon;
     [SerializeField] private DynamicKeyImage keyImage;
+
     private Vector2 aimingDirection;
 
     private void OnEnable()
@@ -40,13 +41,13 @@ public class Angler : MonoBehaviour
     {
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
+        harpoon.Reset();
     }
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
+        harpoon.Shoot(aimingDirection);
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
-
-        Debug.Log("Launching Harpoon! on direction " + aimingDirection);
     }
 }

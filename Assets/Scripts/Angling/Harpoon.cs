@@ -3,6 +3,7 @@ using UnityEngine;
 public class Harpoon : MonoBehaviour
 {
     [SerializeField] private float angleLimit;
+    private LayerMask fishMask = 1 << 6;
 
     public void Rotate(Vector2 aimingDirection)
     {
@@ -14,5 +15,20 @@ public class Harpoon : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    public void Reset()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void Shoot(Vector2 aimingDirection)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, aimingDirection, Mathf.Infinity, fishMask);
+
+        if (hit.collider != null)
+        {
+            FishData fishData = hit.collider.GetComponent<Fish>().Catch();
+        }
     }
 }
