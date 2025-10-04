@@ -19,7 +19,7 @@ public class Harpoon : MonoBehaviour
 
     public void Rotate(Vector2 aimingDirection)
     {
-        float angle = -Vector2.SignedAngle(aimingDirection, Vector2.down);
+        float angle = Vector2.SignedAngle(Vector2.down, aimingDirection);
 
         angle = Mathf.Clamp(angle, -angleLimit, angleLimit);
 

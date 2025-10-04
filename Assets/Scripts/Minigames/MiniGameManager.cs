@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MiniGameManager : MonoBehaviour
 {
     [SerializeField] private BaseMiniGame[] miniGames;
     [SerializeField] private Slider progressionSlider;
+    [SerializeField] private TMP_Text fishNameText;
 
     private int currentMiniGameIndex = -1;
 
@@ -17,7 +19,7 @@ public class MiniGameManager : MonoBehaviour
     private void StartMiniGame(int index, FishData data)
     {
         progressionSlider.value = 0;
-        progressionSlider.gameObject.SetActive(true);
+        fishNameText.text = data.Name;
 
         Debug.Log("Launching MiniGame "+miniGames[index]);
 

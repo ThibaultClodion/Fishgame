@@ -48,7 +48,7 @@ public class FishSpawner : MonoBehaviour
 						+ boxCollider.offset;
 
 		// Pick a random FishType
-		FishType type = fishTypes[Random.Range(0, fishTypes.Length-1)];
+		FishType type = fishTypes[Random.Range(0, fishTypes.Length)];
 
 		// Create a FishData from it
 		FishData data = type.GenerateFishData();

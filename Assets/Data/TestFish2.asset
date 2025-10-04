@@ -16,6 +16,6 @@ MonoBehaviour:
   difficulty: {x: 0, y: 0.5}
   excludedMinigames: 0
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  length: {x: 0.6, y: 1}
-  width: {x: 0.2, y: 0.5}
+  length: {x: 1, y: 1.2}
+  width: {x: 1, y: 1.6}
   speed: {x: 1, y: 1.5}

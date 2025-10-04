@@ -3,6 +3,7 @@ using UnityEngine;
 public class FishData
 {
 	public string Name {get; private set;}
+	// Number 0 - 1, 0 is very easy, 1 is very hard
 	public float Difficulty {get; private set;}
 	public int ExcludedMinigames {get; private set;}
 	public Sprite Sprite {get; private set;}
