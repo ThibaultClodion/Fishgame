@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FishData
 {
+	public FishType Type {get; private set;}
 	public string Name {get; private set;}
 	// Number 0 - 1, 0 is very easy, 1 is very hard
 	public float Difficulty {get; private set;}
@@ -12,7 +13,8 @@ public class FishData
 	// m/s
 	public float Speed {get; private set;}
 
-	public FishData(string name, float diff, int excludedMG, Sprite spr, float len, float width, float spd) {
+	public FishData(FishType type, string name, float diff, int excludedMG, Sprite spr, float len, float width, float spd) {
+		this.Type = type;
 		this.Name = name;
 		this.Difficulty = diff;
 		this.ExcludedMinigames = excludedMG;

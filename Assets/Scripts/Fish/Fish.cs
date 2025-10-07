@@ -25,6 +25,7 @@ public class Fish : MonoBehaviour
 		transform.eulerAngles = new Vector3(0.0f, 0.0f, angle);
 		// Flip sprite if we are facing the other way
 		this.spriteRenderer.flipY = Mathf.Abs(angle) >= 90 && Mathf.Abs(angle) <= 270;
+		//this.spriteRenderer.sprite = dat.Sprite;
 
 		//gameObject.name = data.Name + Hash128.Compute((Time.time + Random.Range(0.0f, 1.0f)).ToString()).ToString();
 	}

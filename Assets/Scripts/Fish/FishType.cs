@@ -24,6 +24,6 @@ public class FishType : ScriptableObject
 		float len = Random.Range(length.x, length.y);
 		float wdth = Random.Range(width.x, width.y);
 		float spd = Random.Range(speed.x, speed.y);
-		return new FishData(fishName, diff, excludedMinigames, sprite, len, wdth, spd);
+		return new FishData(this, fishName, diff, excludedMinigames, sprite, len, wdth, spd);
 	}
 }
