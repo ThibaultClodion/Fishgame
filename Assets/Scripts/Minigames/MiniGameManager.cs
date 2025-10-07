@@ -10,9 +10,11 @@ public class MiniGameManager : MonoBehaviour
 
     private int currentMiniGameIndex = -1;
 
+    private RealRandom random = new RealRandom(1);
+
     public void StartRandomMiniGame(FishData data)
     {
-        int randomIndex = Random.Range(0, miniGames.Length);
+        int randomIndex = this.random.Range(0, miniGames.Length);
         StartMiniGame(randomIndex, data);
     }
 

@@ -50,6 +50,9 @@ public class QTEMiniGame : BaseMiniGame
 	// Current fish-based difficulty scale for progress auto reduction
 	private float difficulityScaleProgress;
 
+	// Random instance for QTE buttons
+	private RealRandom random = new RealRandom(1);
+
 	public override void Initialize(FishData data)
 	{
 		base.Initialize(data);
@@ -62,7 +65,7 @@ public class QTEMiniGame : BaseMiniGame
 	}
 
 	private void PickNextButton() {
-		currentButton = Random.Range(0, InputManager.Instance.ButtonActions.Length-1);
+		currentButton = this.random.Range(0, InputManager.Instance.ButtonActions.Length-1);
 
 		nextButtonTime = Time.time + (timeBetweenButtons + Random.Range(-timeBetweenButtonsRandom, timeBetweenButtonsRandom)) * difficulityScaleButtons;
 		failTimeDuration = (buttonFailTime + Random.Range(-buttonFailTimeRandom, buttonFailTimeRandom)) * difficulityScaleButtons;

@@ -34,6 +34,9 @@ public class FishSpawner : MonoBehaviour
 	// Stores the next spawn time
 	private float nextSpawnTime;
 
+	// Random instance for the fish type
+	private RealRandom random = new RealRandom(2);
+
 	void Spawn() {
         // Sanity Check
         if (fishPrefab == null) {
@@ -48,7 +51,7 @@ public class FishSpawner : MonoBehaviour
 						+ boxCollider.offset;
 
 		// Pick a random FishType
-		FishType type = fishTypes[Random.Range(0, fishTypes.Length)];
+		FishType type = fishTypes[this.random.Range(0, fishTypes.Length)];
 
 		// Create a FishData from it
 		FishData data = type.GenerateFishData();
