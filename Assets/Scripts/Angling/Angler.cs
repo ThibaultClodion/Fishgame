@@ -6,50 +6,66 @@ public class Angler : MonoBehaviour
     [SerializeField] private Harpoon harpoon;
     [SerializeField] private DynamicKeyImage keyImage;
 
-    private Vector2 aimingDirection;
-    private bool canAngle = false;
+    [Header("Aiming Settings")]
+    [SerializeField] private float minAimingMagnitude = 0.05f;
 
-    // TODO: fix bug with when using mouse and starting angling for the second time (maybe use polling rather than events ?)
-    // as the mouse is a bit more fucky when it comes to started events
+    private Vector2 aimingDirection;
+    private bool isAngling;
 
     private void OnEnable()
     {
-        InputManager.Instance.LeftJoystick.started += StartAngling;
-        InputManager.Instance.LeftJoystick.performed += UpdateAngling;
-        InputManager.Instance.LeftJoystick.canceled += CancelAngling;
-
-        InputManager.Instance.RightTrigger.performed += LaunchHarpoon;
+        InputManager.Instance.LeftJoystick.started += UpdateAimingDirection;
+        InputManager.Instance.LeftJoystick.canceled += UpdateAimingDirection;
+        InputManager.Instance.LeftJoystick.performed += UpdateAimingDirection;
+        
+        InputManager.Instance.RightTrigger.started += LaunchHarpoon;
     }
 
     private void OnDisable()
     {
-        InputManager.Instance.LeftJoystick.started -= StartAngling;
-        InputManager.Instance.LeftJoystick.performed -= UpdateAngling;
-        InputManager.Instance.LeftJoystick.canceled -= CancelAngling;
+        InputManager.Instance.LeftJoystick.started -= UpdateAimingDirection;
+        InputManager.Instance.LeftJoystick.canceled -= UpdateAimingDirection;
+        InputManager.Instance.LeftJoystick.performed -= UpdateAimingDirection;
 
-        InputManager.Instance.RightTrigger.performed -= LaunchHarpoon;
+        InputManager.Instance.RightTrigger.started -= LaunchHarpoon;
     }
 
-    private void StartAngling(InputAction.CallbackContext ctx)
+    private void Update()
     {
-        canAngle = true;
+        if (aimingDirection.magnitude > minAimingMagnitude && !isAngling)
+        {
+            StartAngling();
+        }
+        else if(aimingDirection.magnitude < minAimingMagnitude && isAngling)
+        {
+            CancelAngling();
+        }
+        else
+        {
+            UpdateAngling();
+        }
+    }
+
+    private void UpdateAimingDirection(InputAction.CallbackContext ctx)
+    {
+        aimingDirection = ctx.ReadValue<Vector2>();
+    }
+
+    private void StartAngling()
+    {
+        isAngling = true;
         keyImage.gameObject.SetActive(true);
         harpoon.Initialize();
     }
 
-    private void UpdateAngling(InputAction.CallbackContext ctx)
+    private void UpdateAngling()
     {
-        if(!canAngle)
-            return;
-
-        aimingDirection = ctx.ReadValue<Vector2>();
         harpoon.Rotate(aimingDirection);
     }
 
-    private void CancelAngling(InputAction.CallbackContext ctx)
+    private void CancelAngling()
     {
-        canAngle = false;
-
+        isAngling = false;
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
         harpoon.Reset();
@@ -57,10 +73,7 @@ public class Angler : MonoBehaviour
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
-        canAngle = false;
-
         harpoon.Shoot(aimingDirection);
-        keyImage.gameObject.SetActive(false);
-        aimingDirection = Vector2.zero;
+        CancelAngling();
     }
 }

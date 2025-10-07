@@ -26,7 +26,7 @@ public class Harpoon : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public void Shoot(Vector2 aimingDirection)
+    public bool Shoot(Vector2 aimingDirection)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, aimingDirection, Mathf.Infinity, fishMask);
 
@@ -34,8 +34,9 @@ public class Harpoon : MonoBehaviour
         {
             FishData fishData = hit.collider.GetComponent<Fish>().Catch();
             GameManager.Instance.CatchFish(fishData);
+            return true;
         }
 
-        Reset();
+        return false;
     }
 }
