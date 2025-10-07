@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7735215653982203291}
   - component: {fileID: 4183109123458030397}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ArrowSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,9 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a8537886714e147ab3a8b4f8594608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isClockwise: 0
-  progressionDecreaseRate: 0.05
-  progressionIncreaseRate: 0.0001
+  minDecreaseRate: 0.05
+  maxDecreaseRate: 0.15
+  increaseRate: 0.0003
+  minDifficultyForSwitchJoystick: 0.7
+  minTimeBeforeSwitch: 2
+  maxTimeBeforeSwitch: 5
+  keyImage: {fileID: 3966038384510870838}
+  arrowTransform: {fileID: 8217243656900776248}
 --- !u!1001 &6945523648424501818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,3 +241,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5633288051656761432, guid: e6e74053543b95140b3e3437c246bb9d, type: 3}
   m_PrefabInstance: {fileID: 6945523648424501818}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3966038384510870838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6298642589482436364, guid: e6e74053543b95140b3e3437c246bb9d, type: 3}
+  m_PrefabInstance: {fileID: 6945523648424501818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c0bff7fab5d824fa66d4bca607f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

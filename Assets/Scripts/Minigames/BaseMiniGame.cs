@@ -20,7 +20,7 @@ public abstract class BaseMiniGame : MonoBehaviour
 
     public virtual void Initialize(FishData data)
     {
-        AddToProgression(0.2f);
+        AddToProgression(0.35f);
     }
 
     public virtual void Disable() {}
