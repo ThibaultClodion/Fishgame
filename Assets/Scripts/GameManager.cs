@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         State = PlayerState.MINIGAME;
     }
 
-    public void EndMiniGame(bool isCompleted)
+    public void EndMiniGame(bool isCompleted, FishData fishData)
     {
         if (State != PlayerState.MINIGAME)
         {
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         // TODO : Handle post-mini-game logic here (e.g., rewards, penalties)
         if (isCompleted)
         {
-            Debug.Log("Mini-game successfully completed!");
+            Bestiary.NewCatch(fishData);
         }
         else
         {
