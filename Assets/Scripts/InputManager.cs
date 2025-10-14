@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public InputAction EastButtonAction { get; private set; }
     public InputAction SouthButtonAction { get; private set; }
     public InputAction WestButtonAction { get; private set; }
+    public InputAction SelectButtonAction { get; private set; }
 
     public InputAction RightTrigger { get; private set; }
 
@@ -43,6 +44,7 @@ public class InputManager : MonoBehaviour
         EastButton,
         SouthButton,
         WestButton,
+        SelectButton,
         RightTrigger
     };
 
@@ -82,6 +84,7 @@ public class InputManager : MonoBehaviour
         EastButtonAction = playerInput.actions["EastButton"];
         SouthButtonAction = playerInput.actions["SouthButton"];
         WestButtonAction = playerInput.actions["WestButton"];
+        SelectButtonAction = playerInput.actions["SelectButton"];
         RightTrigger = playerInput.actions["RightTrigger"];
 
         // Fill the array
@@ -99,6 +102,7 @@ public class InputManager : MonoBehaviour
         KeyTypes.Add(EastButtonAction, KeyType.EastButton);
         KeyTypes.Add(SouthButtonAction, KeyType.SouthButton);
         KeyTypes.Add(WestButtonAction, KeyType.WestButton);
+        KeyTypes.Add(SelectButtonAction, KeyType.SelectButton);
         KeyTypes.Add(RightTrigger, KeyType.RightTrigger);
 
         KeyImages = new Dictionary<KeyType, KeyImage>();
