@@ -660,6 +660,17 @@ Transform:
   - {fileID: 659467183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765319809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6824119006723686765, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f22c5549c959943b58dff4d4aaee36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1044046682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2749012219469183436, guid: 4c64c19d2f0a8db49af24b4957ed28b1, type: 3}
@@ -1437,12 +1448,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 673780208}
     m_Modifications:
+    - target: {fileID: 2734320459321275187, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: miniGames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734320459321275187, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'miniGames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 765319809}
     - target: {fileID: 3796643260489356182, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_Name
       value: MiniGameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6108142024042003916, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824119006723686765, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: maxDecreaseRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824119006723686765, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: maxIncreaseRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824119006723686765, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: minDecreaseRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824119006723686765, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: minIncreaseRate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9110411897615873624, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
