@@ -10,7 +10,7 @@ public class FishType : ScriptableObject
 	[SerializeField]
 	private int excludedMinigames;
 	[SerializeField]
-	private Sprite sprite;
+	public Sprite sprite;
 	[SerializeField]
 	private Vector2 length;
 	[SerializeField]
