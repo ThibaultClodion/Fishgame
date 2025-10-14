@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 4745116713554971131}
   - {fileID: 2415119539132299156}
   - {fileID: 6824119006723686765}
+  commonContainer: {fileID: 4104380224698020391}
   progressionSlider: {fileID: 4116224861054744235}
   fishNameText: {fileID: 5403679620224977833}
 --- !u!1 &4104380224698020391
@@ -66,12 +67,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2753553129618096548}
   m_Layer: 5
-  m_Name: Base
+  m_Name: Common
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2753553129618096548
 RectTransform:
   m_ObjectHideFlags: 0
@@ -696,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558601385546716486, guid: 2f22302b4cf576748a2d736852dc0cce, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5074727019511388739, guid: 2f22302b4cf576748a2d736852dc0cce, type: 3}
       propertyPath: m_Name

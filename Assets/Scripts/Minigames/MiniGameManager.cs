@@ -4,7 +4,9 @@ using TMPro;
 
 public class MiniGameManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private BaseMiniGame[] miniGames;
+    [SerializeField] private GameObject commonContainer;
     [SerializeField] private Slider progressionSlider;
     [SerializeField] private TMP_Text fishNameText;
 
@@ -25,6 +27,7 @@ public class MiniGameManager : MonoBehaviour
     {
         progressionSlider.value = 0;
         fishNameText.text = currentFishData.Name;
+        commonContainer.SetActive(true);
 
         Debug.Log("Launching MiniGame "+miniGames[index]);
 
@@ -40,6 +43,7 @@ public class MiniGameManager : MonoBehaviour
         miniGames[currentMiniGameIndex].gameObject.SetActive(false);
         miniGames[currentMiniGameIndex].AddToProgressionCallback = null;
         currentMiniGameIndex = -1;
+        commonContainer.SetActive(true);
 
         GameManager.Instance.EndMiniGame(isCompleted, currentFishData);
     }
