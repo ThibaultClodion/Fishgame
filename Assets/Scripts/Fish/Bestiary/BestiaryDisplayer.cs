@@ -9,6 +9,7 @@ public class BestiaryDisplayer : MonoBehaviour
     [SerializeField] private FishButton fishButtonPrefab;
 
     [Header("Scene References")]
+    [SerializeField] private Transform fishList;
     [SerializeField] private Transform fishButtonContainer;
     [SerializeField] private FishDisplay fishDisplay;
 
@@ -19,7 +20,7 @@ public class BestiaryDisplayer : MonoBehaviour
 
     private void SwitchEnable(InputAction.CallbackContext ctx)
     {
-        if(fishButtonContainer.gameObject.activeSelf)
+        if(fishList.gameObject.activeSelf)
         {
             DisableFishButtons();
         }
@@ -31,7 +32,7 @@ public class BestiaryDisplayer : MonoBehaviour
 
     private void EnableFishButtons()
     {
-        fishButtonContainer.gameObject.SetActive(true);
+        fishList.gameObject.SetActive(true);
         fishDisplay.gameObject.SetActive(true);
 
         for (int i = 0; i < fishTypes.Length; i++)
@@ -48,7 +49,7 @@ public class BestiaryDisplayer : MonoBehaviour
 
     private void DisableFishButtons()
     {
-        fishButtonContainer.gameObject.SetActive(false);
+        fishList.gameObject.SetActive(false);
         fishDisplay.gameObject.SetActive(false);
 
         foreach(Transform child in fishButtonContainer)
