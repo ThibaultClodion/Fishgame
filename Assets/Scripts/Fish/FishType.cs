@@ -15,15 +15,15 @@ public class FishType : ScriptableObject
 	private Vector2 length;
 	[SerializeField]
 	private Vector2 width;
-	// m/s
+	// in m/s
 	[SerializeField]
-	private Vector2 speed;
+	private Vector2 speedFactor;
 
 	public FishData GenerateFishData() {
 		float diff = Random.Range(difficulty.x, difficulty.y);
 		float len = Random.Range(length.x, length.y);
 		float wdth = Random.Range(width.x, width.y);
-		float spd = Random.Range(speed.x, speed.y);
+		float spd = diff * speedFactor.x + speedFactor.y;
 		return new FishData(this, fishName, diff, excludedMinigames, sprite, len, wdth, spd);
 	}
 }

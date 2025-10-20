@@ -105,6 +105,7 @@ public class QTEMiniGame : BaseMiniGame
 		currentButton = -1;
 		mashButton = false;
 		keyImage.gameObject.SetActive(false);
+		keyImage.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
 		timeSlider.gameObject.SetActive(false);
 		mashSubgroup.SetActive(false);
 	}
@@ -126,8 +127,11 @@ public class QTEMiniGame : BaseMiniGame
 
 		timeSlider.value = (failTime - Time.time) / failTimeDuration;
 
-		if (mashButton)
+		if (mashButton) {
 			mashSlider.value -= buttonMashDecrease * difficulityScaleProgress * Time.deltaTime;
+			float keyScale = (Mathf.PingPong((failTime - Time.time)*7.0f, 1.0f)*0.4f - 0.20f) + 1.0f;
+			keyImage.transform.localScale = new Vector3(keyScale,keyScale,1.0f);
+		}
 
 		bool pressedOtherButton = false;
 		bool pressedRightButton = false;

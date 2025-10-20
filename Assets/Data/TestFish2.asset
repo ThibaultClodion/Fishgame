@@ -18,4 +18,4 @@ MonoBehaviour:
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   length: {x: 1, y: 1.2}
   width: {x: 1, y: 1.6}
-  speed: {x: 1, y: 1.5}
+  speedFactor: {x: 0.5, y: 0.5}
