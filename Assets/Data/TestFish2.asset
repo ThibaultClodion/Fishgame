@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: TestFish2
   m_EditorClassIdentifier: 
   fishName: Fish Test 2
+  description: The real testing fish
   difficulty: {x: 0, y: 0.5}
   excludedMinigames: 0
-  sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  sprite: {fileID: -2114686101538272709, guid: 4a536d749fd70c74b8f0516700cbaff3, type: 3}
   length: {x: 1, y: 1.2}
   width: {x: 1, y: 1.6}
   speedFactor: {x: 0.5, y: 0.5}

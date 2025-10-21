@@ -6,6 +6,8 @@ public class FishType : ScriptableObject
 	[SerializeField]
 	private string fishName;
 	[SerializeField]
+	private string description;
+	[SerializeField]
 	private Vector2 difficulty;
 	[SerializeField]
 	private int excludedMinigames;

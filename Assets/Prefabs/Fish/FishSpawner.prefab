@@ -96,5 +96,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e1d1df7bbf037f4caafd276498c8e85, type: 2}
   fishPrefab: {fileID: 4899356576018578267, guid: 7b15600307138fd4babaaecadd5bf110, type: 3}
   fishSwimDirection: {x: 1, y: 0}
-  spawnTime: 2000
-  spawnTimeRandom: 250
+  spawnTime: 8000
+  spawnTimeRandom: 1000

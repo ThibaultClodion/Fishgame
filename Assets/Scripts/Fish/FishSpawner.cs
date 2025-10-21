@@ -20,7 +20,7 @@ public class FishSpawner : MonoBehaviour
 	[Header("Spawn Times")]
 	[SerializeField]
 	[Tooltip("Time between spawn in ms")]
-	[Range(0,2000)]
+	[Range(0,10000)]
 	private float spawnTime = 750;
 
 	[SerializeField]

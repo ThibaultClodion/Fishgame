@@ -32,7 +32,7 @@ public class Harpoon : MonoBehaviour
 
         if (hit.collider != null)
         {
-            FishData fishData = hit.collider.GetComponent<Fish>().Catch();
+            FishData fishData = hit.collider.GetComponent<Fish>().Catch(Vector3.zero);
             GameManager.Instance.CatchFish(fishData);
             return true;
         }
