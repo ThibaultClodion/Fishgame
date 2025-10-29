@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,13 +8,16 @@ public class GameManager : MonoBehaviour
     public enum PlayerState {
         IDLE,
         ANGLING,
-        MINIGAME
+        MINIGAME,
+        INMENU
     };
 
     public PlayerState State {get; private set;}
+    private PlayerState previousState;
 
     [SerializeField] private MiniGameManager miniGameManager;
     [SerializeField] private Angler angler;
+    [SerializeField] private GameObject idleCanvas;
 
     private void Awake()
     {
@@ -30,28 +34,42 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        State = PlayerState.IDLE;
-        StartAngling();
+        StartIdle();
+        InputManager.Instance.SouthButtonAction.performed += StartAngling;
     }
 
-    private void StartAngling()
+    private void StartIdle()
     {
-        if (State == PlayerState.ANGLING)
+        State = PlayerState.IDLE;
+        idleCanvas.SetActive(true);
+    }
+
+    private void StopIdle()
+    {
+        idleCanvas.SetActive(false);
+    }
+
+    private void StartAngling(InputAction.CallbackContext ctx)
+    {
+        if (State != PlayerState.IDLE)
         {
             return;
         }
+
+        StopIdle();     
         angler.gameObject.SetActive(true);
         State = PlayerState.ANGLING;
     }
 
-    private void StopAngling()
+    public void StopAngling()
     {
         if (State != PlayerState.ANGLING)
         {
             return;
         }
+
         angler.gameObject.SetActive(false);
-        State = PlayerState.IDLE;
+        StartIdle();
     }
 
     private void StartMiniGame(FishData data)
@@ -84,8 +102,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Mini-game failed.");
         }
 
-        // Go back to Angling
-        StartAngling();
+        StartIdle();
     }
 
     public void CatchFish(FishData data)
@@ -101,5 +118,16 @@ public class GameManager : MonoBehaviour
 
         // Start a Random Minigame
         StartMiniGame(data);
+    }
+
+    public void StartMenu()
+    {
+        previousState = State;
+        State = PlayerState.INMENU;
+    }
+
+    public void StopMenu()
+    {
+        State = previousState;
     }
 }

@@ -20,13 +20,15 @@ public class BestiaryDisplayer : MonoBehaviour
 
     private void SwitchEnable(InputAction.CallbackContext ctx)
     {
-        if(fishList.gameObject.activeSelf)
+        if (fishList.gameObject.activeSelf && GameManager.Instance.State == GameManager.PlayerState.INMENU)
         {
             DisableFishButtons();
+            GameManager.Instance.StopMenu();
         }
-        else
+        else if(!fishList.gameObject.activeSelf && GameManager.Instance.State == GameManager.PlayerState.IDLE)
         {
             EnableFishButtons();
+            GameManager.Instance.StartMenu();
         }
     }
 

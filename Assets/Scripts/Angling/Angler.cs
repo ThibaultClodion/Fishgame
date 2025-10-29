@@ -6,11 +6,7 @@ public class Angler : MonoBehaviour
     [SerializeField] private Harpoon harpoon;
     [SerializeField] private DynamicKeyImage keyImage;
 
-    [Header("Aiming Settings")]
-    [SerializeField] private float minAimingMagnitude = 0.05f;
-
     private Vector2 aimingDirection;
-    private bool isAngling;
 
     private void OnEnable()
     {
@@ -18,7 +14,9 @@ public class Angler : MonoBehaviour
         InputManager.Instance.LeftJoystick.canceled += UpdateAimingDirection;
         InputManager.Instance.LeftJoystick.performed += UpdateAimingDirection;
         
-        InputManager.Instance.RightTrigger.started += LaunchHarpoon;
+        InputManager.Instance.RightTrigger.performed += LaunchHarpoon;
+
+        StartAngling();
     }
 
     private void OnDisable()
@@ -27,23 +25,12 @@ public class Angler : MonoBehaviour
         InputManager.Instance.LeftJoystick.canceled -= UpdateAimingDirection;
         InputManager.Instance.LeftJoystick.performed -= UpdateAimingDirection;
 
-        InputManager.Instance.RightTrigger.started -= LaunchHarpoon;
+        InputManager.Instance.RightTrigger.performed -= LaunchHarpoon;
     }
 
     private void Update()
     {
-        if (aimingDirection.magnitude > minAimingMagnitude && !isAngling)
-        {
-            StartAngling();
-        }
-        else if(aimingDirection.magnitude < minAimingMagnitude && isAngling)
-        {
-            CancelAngling();
-        }
-        else
-        {
-            UpdateAngling();
-        }
+        UpdateAngling();
     }
 
     private void UpdateAimingDirection(InputAction.CallbackContext ctx)
@@ -53,7 +40,6 @@ public class Angler : MonoBehaviour
 
     private void StartAngling()
     {
-        isAngling = true;
         keyImage.gameObject.SetActive(true);
         harpoon.Initialize();
     }
@@ -65,7 +51,6 @@ public class Angler : MonoBehaviour
 
     private void CancelAngling()
     {
-        isAngling = false;
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
         harpoon.Reset();
@@ -73,7 +58,13 @@ public class Angler : MonoBehaviour
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
-        harpoon.Shoot(aimingDirection);
+        bool catched = harpoon.Shoot(aimingDirection);
+
         CancelAngling();
+
+        if (!catched)
+        {
+            GameManager.Instance.StopAngling();
+        }
     }
 }

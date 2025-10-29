@@ -13,6 +13,11 @@ public class FishButton : MonoBehaviour, ISelectHandler
         this.fishType = fishType;
         this.fishDisplay = fishDisplay;
         image.sprite = fishType.sprite;
+
+        if(Bestiary.GetBestiaryEntry(fishType) == null)
+        {
+            GetComponent<Button>().interactable = false;
+        }
     }
 
     public void OnSelect(BaseEventData eventData)
