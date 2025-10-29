@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.764151, g: 0.5113767, b: 0.17661981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -236,12 +236,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f22c5549c959943b58dff4d4aaee36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zonePortion: 0.15
+  minZonePortion: 0.15
+  maxZonePortion: 0.15
   zoneMoveSpeed: 300
-  decreaseRate: 0.1
-  increaseRate: 0.2
+  gravity: 600
+  maxFallSpeed: 400
+  minDecreaseRate: 0.1
+  maxDecreaseRate: 0.15
+  minIncreaseRate: 0.2
+  maxIncreaseRate: 0.2
+  minFishSpeed: 0.3
+  maxFishSpeed: 0.5
   fishSlider: {fileID: 8346446774207435898}
   zoneTransform: {fileID: 8942175099582862208}
+  fishImage: {fileID: 0}
 --- !u!1 &7028285473692938849
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,8 +355,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7715701207816819010}
-  - {fileID: 4940712618336204796}
   - {fileID: 8942175099582862208}
+  - {fileID: 4940712618336204796}
   m_Father: {fileID: 7157707074144157483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}

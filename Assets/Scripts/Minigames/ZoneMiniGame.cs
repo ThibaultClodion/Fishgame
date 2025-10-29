@@ -30,6 +30,7 @@ public class ZoneMiniGame : BaseMiniGame
     [Header("References")]
     [SerializeField] private Slider fishSlider;
     [SerializeField] private RectTransform zoneTransform;
+    [SerializeField] private Image fishImage;
 
     // Minigame variables
     private float startTime;
@@ -44,6 +45,7 @@ public class ZoneMiniGame : BaseMiniGame
         base.Initialize(data);
 
         // Initialize variables
+        fishImage.sprite = data.Sprite;
         startTime = Time.time;
         sliderHeight = fishSlider.GetComponent<RectTransform>().rect.height;
         zoneHeight = sliderHeight * Mathf.Lerp(minZonePortion, maxZonePortion, data.Difficulty);
