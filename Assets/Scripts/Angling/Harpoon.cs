@@ -26,17 +26,17 @@ public class Harpoon : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public bool Shoot(Vector2 aimingDirection)
+    public Fish Shoot(Vector2 aimingDirection)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, aimingDirection, Mathf.Infinity, fishMask);
 
         if (hit.collider != null)
         {
-            FishData fishData = hit.collider.GetComponent<Fish>().Catch(Vector3.zero);
-            GameManager.Instance.CatchFish(fishData);
-            return true;
+            Fish fish = hit.collider.GetComponent<Fish>();
+            fish.Hook();
+            return fish;
         }
 
-        return false;
+        return null;
     }
 }

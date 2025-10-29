@@ -49,7 +49,7 @@ public class Angler : MonoBehaviour
         harpoon.Rotate(aimingDirection);
     }
 
-    private void CancelAngling()
+    public void CancelAngling()
     {
         keyImage.gameObject.SetActive(false);
         aimingDirection = Vector2.zero;
@@ -58,13 +58,17 @@ public class Angler : MonoBehaviour
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
-        bool catched = harpoon.Shoot(aimingDirection);
+        Fish fish = harpoon.Shoot(aimingDirection);
 
-        CancelAngling();
-
-        if (!catched)
+        if (fish == null)
         {
+            CancelAngling();
             GameManager.Instance.StopAngling();
+        }
+        else
+        {
+            keyImage.gameObject.SetActive(false);
+            GameManager.Instance.HookFish(fish);
         }
     }
 }

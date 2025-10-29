@@ -739,7 +739,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   harpoon: {fileID: 1044046683}
   keyImage: {fileID: 1986163092}
-  minAimingMagnitude: 0.05
 --- !u!1 &1258354770
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
 	// Our data instance
-	private FishData data;
+	public FishData Data { get; private set; }
 
 	enum FishState {
 		SWIMING,
@@ -15,14 +15,16 @@ public class Fish : MonoBehaviour
 	// Current fish state
 	private FishState state;
 
-	// Component references
-	private SpriteRenderer spriteRenderer;
+    // Component references
+    private SpriteRenderer spriteRenderer;
 	private Rigidbody2D rigid;
+    private float catchTime = 0.5f;
+    private Vector3 characterPosition = new Vector3(0f, 1.225f, 0f);
 
-	// Called from FishSpawner
-	public void Init(FishData dat, Vector2 direction) {
+    // Called from FishSpawner
+    public void Init(FishData dat, Vector2 direction) {
 		// Bind data
-		this.data = dat;
+		this.Data = dat;
 		// Get Components
 		this.spriteRenderer = GetComponent<SpriteRenderer>();
 		this.rigid = GetComponent<Rigidbody2D>();
@@ -30,7 +32,7 @@ public class Fish : MonoBehaviour
 		this.state = FishState.SWIMING;
 
 		// Apply fish data size
-		transform.localScale = new Vector3(this.data.Length, this.data.Width, 1.0f);
+		transform.localScale = new Vector3(this.Data.Length, this.Data.Width, 1.0f);
 		// Apply fish direction rotation
 		float angle = Vector3.Angle(Vector3.right, direction);
 		transform.eulerAngles = new Vector3(0.0f, 0.0f, angle);
@@ -49,7 +51,7 @@ public class Fish : MonoBehaviour
 		this.state = FishState.HOOKED;
 
 		// Return data
-		return this.data;
+		return this.Data;
 	}
 
 	public void UnHook() {
@@ -70,7 +72,7 @@ public class Fish : MonoBehaviour
 		this.state = FishState.CAUGHT;
 
 		// Return data
-		return this.data;
+		return this.Data;
 	}
 
 	// Destroys itself
@@ -86,16 +88,26 @@ public class Fish : MonoBehaviour
 
 	void Update() {
 		// TODO: Replace this with a better check
-		if (Mathf.Abs(transform.position.x) >= 10.0f + data.Length/2.0f)
+		if (Mathf.Abs(transform.position.x) >= 10.0f + Data.Length/2.0f)
 			Destroy(gameObject);
 
 		// TODO: Struggle animation
 		if (this.state == FishState.HOOKED) {
 
 		}
+        // TODO : stuck player during catch animation
+        if (this.state == FishState.CAUGHT)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, characterPosition, Vector3.Distance(transform.position, characterPosition) / catchTime * Time.deltaTime);
 
-		// Only move if we're not hooked
-		// Use the rigidbody to handle movement
-		this.rigid.linearVelocity = this.state == FishState.SWIMING ? transform.right * data.Speed : Vector3.zero;
+            if(Vector3.Distance(transform.position, characterPosition) < 0.1f)
+            {
+                Finish();
+            }
+        }
+
+        // Only move if we're not hooked
+        // Use the rigidbody to handle movement
+        this.rigid.linearVelocity = this.state == FishState.SWIMING ? transform.right * Data.Speed : Vector3.zero;
 	}
 }

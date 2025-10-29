@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         State = PlayerState.IDLE;
         idleCanvas.SetActive(true);
+        angler.CancelAngling();
     }
 
     private void StopIdle()
@@ -72,18 +73,19 @@ public class GameManager : MonoBehaviour
         StartIdle();
     }
 
-    private void StartMiniGame(FishData data)
+    private void StartMiniGame(Fish fish)
     {
         if (State == PlayerState.MINIGAME)
         {
             return;
         }
+
         miniGameManager.gameObject.SetActive(true);
-        miniGameManager.StartRandomMiniGame(data);
+        miniGameManager.StartRandomMiniGame(fish);
         State = PlayerState.MINIGAME;
     }
 
-    public void EndMiniGame(bool isCompleted, FishData fishData)
+    public void EndMiniGame(bool isCompleted, Fish fish)
     {
         if (State != PlayerState.MINIGAME)
         {
@@ -92,10 +94,10 @@ public class GameManager : MonoBehaviour
 
         miniGameManager.gameObject.SetActive(false);
 
-        // TODO : Handle post-mini-game logic here (e.g., rewards, penalties)
         if (isCompleted)
         {
-            Bestiary.NewCatch(fishData);
+            fish.Catch(new Vector3(0f, 1.225f, 0f));
+            Bestiary.NewCatch(fish.Data);
         }
         else
         {
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour
         StartIdle();
     }
 
-    public void CatchFish(FishData data)
+    public void HookFish(Fish fish)
     {
         // We can only catch fish when Angling
         if (State != PlayerState.ANGLING)
@@ -114,10 +116,10 @@ public class GameManager : MonoBehaviour
         }
 
         // Stop angling
-        StopAngling();
+        angler.gameObject.SetActive(false);
 
         // Start a Random Minigame
-        StartMiniGame(data);
+        StartMiniGame(fish);
     }
 
     public void StartMenu()

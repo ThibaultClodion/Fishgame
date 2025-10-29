@@ -11,14 +11,15 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] private TMP_Text fishNameText;
 
     private int currentMiniGameIndex = -1;
-    private FishData currentFishData;
+    private Fish currentFish;
 
     private RealRandom random = new RealRandom(1);
 
-    public void StartRandomMiniGame(FishData data)
+    public void StartRandomMiniGame(Fish fish)
     {
         int randomIndex = this.random.Range(0, miniGames.Length);
-        currentFishData = data;
+        currentFish = fish;
+
 
         StartMiniGame(randomIndex);
     }
@@ -26,14 +27,12 @@ public class MiniGameManager : MonoBehaviour
     private void StartMiniGame(int index)
     {
         progressionSlider.value = 0;
-        fishNameText.text = currentFishData.Name;
+        fishNameText.text = currentFish.Data.Name;
         commonContainer.SetActive(true);
-
-        Debug.Log("Launching MiniGame "+miniGames[index]);
 
         miniGames[index].gameObject.SetActive(true);
         miniGames[index].AddToProgressionCallback = AddToProgression;
-        miniGames[index].Initialize(currentFishData);
+        miniGames[index].Initialize(currentFish.Data);
         currentMiniGameIndex = index;
     }
 
@@ -45,7 +44,7 @@ public class MiniGameManager : MonoBehaviour
         currentMiniGameIndex = -1;
         commonContainer.SetActive(true);
 
-        GameManager.Instance.EndMiniGame(isCompleted, currentFishData);
+        GameManager.Instance.EndMiniGame(isCompleted, currentFish);
     }
 
     private void AddToProgression(float value)
