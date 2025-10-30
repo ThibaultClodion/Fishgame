@@ -48,7 +48,8 @@ public class Fish : MonoBehaviour
 			Debug.LogError("Trying to hook while not swiming");
 			return null;
 		}
-		this.state = FishState.HOOKED;
+
+        this.state = FishState.HOOKED;
 
 		// Return data
 		return this.Data;

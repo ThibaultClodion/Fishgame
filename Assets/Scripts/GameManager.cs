@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Mini-game failed.");
+            fish.UnHook();
         }
 
         StartIdle();
