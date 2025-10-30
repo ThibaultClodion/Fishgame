@@ -70,7 +70,9 @@ public class Fish : MonoBehaviour
 			return null;
 		}
 
-		this.state = FishState.CAUGHT;
+        GetComponent<Collider2D>().enabled = false;
+        GamepadVibration.Instance.Vibration(0f, 1f, catchTime);
+        this.state = FishState.CAUGHT;
 
 		// Return data
 		return this.Data;

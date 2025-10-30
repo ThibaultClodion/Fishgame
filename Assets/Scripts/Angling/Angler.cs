@@ -26,6 +26,8 @@ public class Angler : MonoBehaviour
         InputManager.Instance.LeftJoystick.performed -= UpdateAimingDirection;
 
         InputManager.Instance.RightTrigger.performed -= LaunchHarpoon;
+
+        keyImage.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -53,6 +55,7 @@ public class Angler : MonoBehaviour
 
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
-        Fish fish = harpoon.Shoot(aimingDirection);
+        GamepadVibration.Instance.Vibration(1f, 0, 0.1f);
+        harpoon.Shoot(aimingDirection);
     }
 }

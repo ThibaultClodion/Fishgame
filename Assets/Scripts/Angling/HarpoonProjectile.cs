@@ -22,7 +22,6 @@ public class HarpoonProjectile : MonoBehaviour
 
     public void ResetProjectile(Transform transformPosition)
     {
-        isLaunched = false;
         transform.position = transformPosition.position;
         projectileTrail.emitting = false;
         projectileTrail.Clear();
@@ -30,6 +29,9 @@ public class HarpoonProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(isLaunched == false) return;
+        isLaunched = false;
+
         Fish fish = collision.GetComponent<Fish>();
 
         rb.linearVelocity = Vector2.zero;

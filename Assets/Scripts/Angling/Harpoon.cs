@@ -41,19 +41,15 @@ public class Harpoon : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public Fish Shoot(Vector2 aimingDirection)
+    public void Shoot(Vector2 aimingDirection)
     {
         isLaunching = true;
         target.SetActive(false);
         projectile.Launch(aimingDirection, projectileSpeed);
-
-        return null;
     }
 
     private void ProjectileHit(Fish fish)
     {
-        if(isLaunching == false) return;
-
         if (fish == null)
         {
             projectile.ResetProjectile(launchPoint);
@@ -61,6 +57,7 @@ public class Harpoon : MonoBehaviour
         }
         else
         {
+            GamepadVibration.Instance.Vibration(0.5f, 0.5f, 0.2f);
             fish.Hook();
             GameManager.Instance.HookFish(fish);
         }
