@@ -28,7 +28,8 @@ public class DynamicKeyImage : MonoBehaviour
 
 	private void OnEnable() {
 		InputManager.Instance.OnInputModeChangeEvent += UpdateImage;
-	}
+        UpdateImage(InputManager.Instance.UsingKeyboard);
+    }
 
 	private void OnDisable() {
 		InputManager.Instance.OnInputModeChangeEvent -= UpdateImage;

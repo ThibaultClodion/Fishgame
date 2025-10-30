@@ -16,8 +16,10 @@ public class SpinMiniGame : BaseMiniGame
     [SerializeField] private float maxTimeBeforeSwitch = 1f;
 
     [Header("Objet References")]
-    [SerializeField] private DynamicKeyImage keyImage;
-    [SerializeField] private Transform arrowTransform;
+    [SerializeField] private GameObject leftStickImage;
+    [SerializeField] private Transform leftArrowTransform;
+    [SerializeField] private GameObject rightStickImage;
+    [SerializeField] private Transform rightArrowTransform;
 
     private Vector2 lastJoystickPosition;
     private float decreaseRate;
@@ -124,16 +126,25 @@ public class SpinMiniGame : BaseMiniGame
 
     private void UpdateVisual()
     {
-        // Change Joystick image
-        if(isCurrentRightJoystick)
-            keyImage.SetAction(InputManager.Instance.RightJoystick);
+        leftStickImage.SetActive(false);
+        rightStickImage.SetActive(false);
+
+        // Enable correct joystick image
+        if (isCurrentRightJoystick)
+            rightStickImage.SetActive(true);
         else
-            keyImage.SetAction(InputManager.Instance.LeftJoystick);
+            leftStickImage.SetActive(true);
 
         // Change arrow direction
         if (isCurrentClockwise)
-            arrowTransform.localEulerAngles = new Vector3(0, 180, 0);
+        {
+            leftArrowTransform.localEulerAngles = new Vector3(0, 180, 0);
+            rightArrowTransform.localEulerAngles = new Vector3(0, 180, 0);
+        }
         else
-            arrowTransform.localEulerAngles = Vector3.zero;
+        {
+            leftArrowTransform.localEulerAngles = Vector3.zero;
+            rightArrowTransform.localEulerAngles = Vector3.zero;
+        }
     }
 }
