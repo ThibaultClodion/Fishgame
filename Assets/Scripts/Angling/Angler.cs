@@ -30,7 +30,7 @@ public class Angler : MonoBehaviour
 
     private void Update()
     {
-        UpdateAngling();
+        harpoon.Rotate(aimingDirection);
     }
 
     private void UpdateAimingDirection(InputAction.CallbackContext ctx)
@@ -44,11 +44,6 @@ public class Angler : MonoBehaviour
         harpoon.Initialize();
     }
 
-    private void UpdateAngling()
-    {
-        harpoon.Rotate(aimingDirection);
-    }
-
     public void CancelAngling()
     {
         keyImage.gameObject.SetActive(false);
@@ -59,16 +54,5 @@ public class Angler : MonoBehaviour
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
         Fish fish = harpoon.Shoot(aimingDirection);
-
-        if (fish == null)
-        {
-            CancelAngling();
-            GameManager.Instance.StopAngling();
-        }
-        else
-        {
-            keyImage.gameObject.SetActive(false);
-            GameManager.Instance.HookFish(fish);
-        }
     }
 }
