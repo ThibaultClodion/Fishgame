@@ -3,7 +3,14 @@ using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
-    private float rotationStart;
+    private float startTime;
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        gameObject.SetActive(false);
+    }
 
     public void StartRotation(float seconds, float waitTime)
     {
@@ -13,14 +20,14 @@ public class UIAnimation : MonoBehaviour
     private IEnumerator RotateOverTime(float seconds, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        rotationStart = Time.time;
+        startTime = Time.time;
         float elapsed = 0f;
 
         while (elapsed < seconds)
         {
             float angle = (elapsed / seconds) * 360f;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            elapsed = Time.time - rotationStart;
+            elapsed = Time.time - startTime;
             yield return null;
         }
 

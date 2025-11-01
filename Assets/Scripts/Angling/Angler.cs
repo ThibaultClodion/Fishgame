@@ -56,6 +56,6 @@ public class Angler : MonoBehaviour
     private void LaunchHarpoon(InputAction.CallbackContext ctx)
     {
         GamepadVibration.Instance.Vibration(1f, 0, 0.1f);
-        harpoon.Shoot(aimingDirection);
+        harpoon.Shoot();
     }
 }

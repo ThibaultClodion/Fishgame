@@ -44,7 +44,7 @@ public class MiniGameManager : MonoBehaviour
         currentMiniGameIndex = -1;
         commonContainer.SetActive(true);
 
-        GameManager.Instance.EndMiniGame(isCompleted, currentFish);
+        GameManager.Instance.EndMiniGame(isCompleted);
     }
 
     private void AddToProgression(float value)

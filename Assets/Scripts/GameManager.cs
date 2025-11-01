@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Angler angler;
     [SerializeField] private GameObject idleCanvas;
 
-    // Catch star animation
+    // Catch information
     [SerializeField] private UIAnimation catchStar;
+    private Fish currentFish;
     private float outWaterTime = 1f;
     private float spinTime = 2.5f;
 
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
         StartIdle();
     }
 
-    private void StartMiniGame(Fish fish)
+    private void StartMiniGame()
     {
         if (State == PlayerState.MINIGAME)
         {
@@ -86,11 +87,11 @@ public class GameManager : MonoBehaviour
         }
 
         miniGameManager.gameObject.SetActive(true);
-        miniGameManager.StartRandomMiniGame(fish);
+        miniGameManager.StartRandomMiniGame(currentFish);
         State = PlayerState.MINIGAME;
     }
 
-    public void EndMiniGame(bool isCompleted, Fish fish)
+    public void EndMiniGame(bool isCompleted)
     {
         if (State != PlayerState.MINIGAME)
         {
@@ -101,8 +102,8 @@ public class GameManager : MonoBehaviour
 
         if (isCompleted)
         {
-            FishData fishData = fish.Catch(catchStar.transform.position, outWaterTime, spinTime);
-            Bestiary.NewCatch(fish.Data);
+            FishData fishData = currentFish.Catch(catchStar.transform.position, outWaterTime, spinTime);
+            Bestiary.NewCatch(currentFish.Data);
 
             if (fishData != null)
             {
@@ -112,7 +113,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            fish.UnHook();
+            currentFish.UnHook();
+            currentFish = null;
         }
 
         StartIdle();
@@ -129,8 +131,13 @@ public class GameManager : MonoBehaviour
         // Stop angling
         angler.gameObject.SetActive(false);
 
-        // Start a Random Minigame
-        StartMiniGame(fish);
+        // Reset catch animation
+        catchStar.Reset();
+        if(currentFish != null) currentFish.Finish();
+
+        // Start minigame
+        currentFish = fish;
+        StartMiniGame();
     }
 
     public void StartMenu()

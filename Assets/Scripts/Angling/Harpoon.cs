@@ -11,6 +11,7 @@ public class Harpoon : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject target;
     [SerializeField] private float angleLimit;
+    private float currentAngle;
     private LayerMask fishMask = 1 << 6;
 
     public void Initialize()
@@ -34,17 +35,19 @@ public class Harpoon : MonoBehaviour
     {
         if(isLaunching) return;
 
-        float angle = Vector2.SignedAngle(Vector2.down, aimingDirection);
+        currentAngle = Vector2.SignedAngle(Vector2.down, aimingDirection);
+        currentAngle = Mathf.Clamp(currentAngle, -angleLimit, angleLimit);
 
-        angle = Mathf.Clamp(angle, -angleLimit, angleLimit);
-
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
 
-    public void Shoot(Vector2 aimingDirection)
+    public void Shoot()
     {
         isLaunching = true;
         target.SetActive(false);
+
+        Vector2 aimingDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.down;
+
         projectile.Launch(aimingDirection, projectileSpeed);
     }
 
