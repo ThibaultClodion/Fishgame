@@ -18,8 +18,13 @@ public class Fish : MonoBehaviour
     // Component references
     private SpriteRenderer spriteRenderer;
 	private Rigidbody2D rigid;
-    private float catchTime = 0.5f;
-    private Vector3 characterPosition = new Vector3(0f, 1.225f, 0f);
+
+    // Catch animation parameters
+    private Vector3 positionWhenCaught;
+    private Vector3 moveToPosition;
+    private float outWaterTime;
+    private float timeBeforeDestroy;
+    private float caughtTime;
 
     // Called from FishSpawner
     public void Init(FishData dat, Vector2 direction) {
@@ -64,14 +69,20 @@ public class Fish : MonoBehaviour
 	}
 
 	// Destroys itself and returns data
-	public FishData Catch(Vector3 moveToPosition) {
+	public FishData Catch(Vector3 moveToPosition, float outWaterTime, float beforeDestroyTime) {
 		if (this.state != FishState.HOOKED) {
 			Debug.LogError("Trying to catch while not hooked");
 			return null;
 		}
 
         GetComponent<Collider2D>().enabled = false;
-        GamepadVibration.Instance.Vibration(0f, 1f, catchTime);
+        GamepadVibration.Instance.Vibration(0f, 1f, 0.3f);
+
+        this.positionWhenCaught = transform.position;
+        this.caughtTime = Time.time;
+        this.moveToPosition = moveToPosition;
+        this.outWaterTime = outWaterTime;
+        this.timeBeforeDestroy = beforeDestroyTime;
         this.state = FishState.CAUGHT;
 
 		// Return data
@@ -101,9 +112,11 @@ public class Fish : MonoBehaviour
         // TODO : stuck player during catch animation
         if (this.state == FishState.CAUGHT)
         {
-            transform.position = Vector3.MoveTowards(transform.position, characterPosition, Vector3.Distance(transform.position, characterPosition) / catchTime * Time.deltaTime);
+            //Move to moveToPosition in outWaterTime seconds
+            float t = (Time.time - caughtTime) / outWaterTime;
+            transform.position = Vector3.Lerp(positionWhenCaught, moveToPosition, t);
 
-            if(Vector3.Distance(transform.position, characterPosition) < 0.1f)
+            if (caughtTime + outWaterTime + timeBeforeDestroy <= Time.time)
             {
                 Finish();
             }

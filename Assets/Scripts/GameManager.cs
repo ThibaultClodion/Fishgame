@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Angler angler;
     [SerializeField] private GameObject idleCanvas;
 
+    // Catch star animation
+    [SerializeField] private UIAnimation catchStar;
+    private float outWaterTime = 1f;
+    private float spinTime = 2.5f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -96,8 +101,14 @@ public class GameManager : MonoBehaviour
 
         if (isCompleted)
         {
-            fish.Catch(new Vector3(0f, 1.225f, 0f));
+            FishData fishData = fish.Catch(catchStar.transform.position, outWaterTime, spinTime);
             Bestiary.NewCatch(fish.Data);
+
+            if (fishData != null)
+            {
+                catchStar.gameObject.SetActive(true);
+                catchStar.StartRotation(spinTime, outWaterTime);
+            }
         }
         else
         {
