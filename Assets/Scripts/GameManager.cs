@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         StartIdle();
         InputManager.Instance.SouthButtonAction.performed += StartAngling;
+        InputManager.Instance.StartButtonAction.performed += OpenMainMenu;
+        OpenMainMenu(new InputAction.CallbackContext());
     }
 
     private void StartIdle()
@@ -138,6 +141,32 @@ public class GameManager : MonoBehaviour
         // Start minigame
         currentFish = fish;
         StartMiniGame();
+    }
+
+    private void OpenMainMenu(InputAction.CallbackContext ctx)
+    {
+        if(!SceneManager.GetSceneByName("MainMenu").isLoaded && State == PlayerState.IDLE)
+        {
+            SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+            StartMenu();
+
+            InputManager.Instance.StartButtonAction.performed -= OpenMainMenu;
+            InputManager.Instance.StartButtonAction.performed += CloseMainMenu;
+            InputManager.Instance.EastButtonAction.performed += CloseMainMenu;
+        }
+    }
+
+    public void CloseMainMenu(InputAction.CallbackContext ctx)
+    {
+        if(SceneManager.GetSceneByName("MainMenu").isLoaded)
+        {
+            SceneManager.UnloadSceneAsync("MainMenu");
+            StopMenu();
+
+            InputManager.Instance.StartButtonAction.performed += OpenMainMenu;
+            InputManager.Instance.StartButtonAction.performed -= CloseMainMenu;
+            InputManager.Instance.EastButtonAction.performed -= CloseMainMenu;
+        }
     }
 
     public void StartMenu()

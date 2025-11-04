@@ -73,8 +73,12 @@ MonoBehaviour:
   - type: 6
     images:
       keyboard: {fileID: -7445895027901156538, guid: bb4d7a38871d0fc448e694f42e71b0b7, type: 3}
-      gamepad: {fileID: 7893679739992264440, guid: 7a537fdef5971bd478362b708b74ac31, type: 3}
+      gamepad: {fileID: -7631617300087531070, guid: e9de560201363ef4781c8510763343f0, type: 3}
   - type: 7
+    images:
+      keyboard: {fileID: -1619729138347912877, guid: 86d2d123b43c474419fc0058a4519d79, type: 3}
+      gamepad: {fileID: 7893679739992264440, guid: 7a537fdef5971bd478362b708b74ac31, type: 3}
+  - type: 8
     images:
       keyboard: {fileID: -8442897585661458078, guid: 900c4639d19244844a289e05b0eefd75, type: 3}
       gamepad: {fileID: 226166774298149191, guid: 8364164e65a279749a05804e7f40f4d8, type: 3}

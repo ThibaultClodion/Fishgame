@@ -15,20 +15,32 @@ public class BestiaryDisplayer : MonoBehaviour
 
     private void Start()
     {
-        InputManager.Instance.SelectButtonAction.performed += SwitchEnable;
+        InputManager.Instance.SelectButtonAction.performed += Enable;
     }
 
-    private void SwitchEnable(InputAction.CallbackContext ctx)
+    private void Disable(InputAction.CallbackContext context)
     {
         if (fishList.gameObject.activeSelf && GameManager.Instance.State == GameManager.PlayerState.INMENU)
         {
             DisableFishButtons();
             GameManager.Instance.StopMenu();
+
+            InputManager.Instance.SelectButtonAction.performed += Enable;
+            InputManager.Instance.SelectButtonAction.performed -= Disable;
+            InputManager.Instance.EastButtonAction.performed -= Disable;
         }
-        else if(!fishList.gameObject.activeSelf && GameManager.Instance.State == GameManager.PlayerState.IDLE)
+    }
+
+    private void Enable(InputAction.CallbackContext context)
+    {
+        if (!fishList.gameObject.activeSelf && GameManager.Instance.State == GameManager.PlayerState.IDLE)
         {
             EnableFishButtons();
             GameManager.Instance.StartMenu();
+
+            InputManager.Instance.SelectButtonAction.performed -= Enable;
+            InputManager.Instance.SelectButtonAction.performed += Disable;
+            InputManager.Instance.EastButtonAction.performed += Disable;
         }
     }
 
