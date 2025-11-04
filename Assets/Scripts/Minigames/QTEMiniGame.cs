@@ -84,7 +84,7 @@ public class QTEMiniGame : BaseMiniGame
 	}
 
 	private void PickNextButton() {
-		currentButton = this.random.Range(0, InputManager.Instance.ButtonActions.Length-1);
+		currentButton = this.random.Range(0, InputManager.Instance.ButtonActions.Length);
 
 		mashButton = Random.value <= buttonMashProbablity;
 

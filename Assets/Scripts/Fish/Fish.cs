@@ -15,24 +15,26 @@ public class Fish : MonoBehaviour
 	// Current fish state
 	private FishState state;
 
-    // Component references
-    private SpriteRenderer spriteRenderer;
+	// Component references
+	private SpriteRenderer spriteRenderer;
 	private Rigidbody2D rigid;
+	private Collider2D colliderRef;
 
-    // Catch animation parameters
-    private Vector3 positionWhenCaught;
-    private Vector3 moveToPosition;
-    private float outWaterTime;
-    private float timeBeforeDestroy;
-    private float caughtTime;
+	// Catch animation parameters
+	private Vector3 positionWhenHooked;
+	private Vector3 moveToPosition;
+	private float outWaterTime;
+	private float timeBeforeDestroy;
+	private float caughtTime;
 
-    // Called from FishSpawner
-    public void Init(FishData dat, Vector2 direction) {
+	// Called from FishSpawner
+	public void Init(FishData dat, Vector2 direction) {
 		// Bind data
 		this.Data = dat;
 		// Get Components
 		this.spriteRenderer = GetComponent<SpriteRenderer>();
 		this.rigid = GetComponent<Rigidbody2D>();
+		this.colliderRef = GetComponent<Collider2D>();
 
 		this.state = FishState.SWIMING;
 
@@ -54,7 +56,8 @@ public class Fish : MonoBehaviour
 			return null;
 		}
 
-        this.state = FishState.HOOKED;
+		this.state = FishState.HOOKED;
+		this.positionWhenHooked = transform.position;
 
 		// Return data
 		return this.Data;
@@ -75,15 +78,14 @@ public class Fish : MonoBehaviour
 			return null;
 		}
 
-        GetComponent<Collider2D>().enabled = false;
-        GamepadVibration.Instance.Vibration(0f, 1f, 0.3f);
+		GamepadVibration.Instance.Vibration(0f, 1f, 0.3f);
 
-        this.positionWhenCaught = transform.position;
-        this.caughtTime = Time.time;
-        this.moveToPosition = moveToPosition;
-        this.outWaterTime = outWaterTime;
-        this.timeBeforeDestroy = beforeDestroyTime;
-        this.state = FishState.CAUGHT;
+		this.caughtTime = Time.time;
+		this.moveToPosition = moveToPosition;
+		this.outWaterTime = outWaterTime;
+		this.timeBeforeDestroy = beforeDestroyTime;
+
+		this.state = FishState.CAUGHT;
 
 		// Return data
 		return this.Data;
@@ -107,23 +109,26 @@ public class Fish : MonoBehaviour
 
 		// TODO: Struggle animation
 		if (this.state == FishState.HOOKED) {
-
+			transform.position = this.positionWhenHooked + new Vector3(Mathf.Sin(Time.time * 9.0f) * 0.1f, 
+																	   Mathf.Sin(Mathf.Sin((Time.time + 1.6f) * 4.0f) * 3.14f * 2.0f) * 0.05f, 0.0f);
 		}
-        // TODO : stuck player during catch animation
-        if (this.state == FishState.CAUGHT)
-        {
-            //Move to moveToPosition in outWaterTime seconds
-            float t = (Time.time - caughtTime) / outWaterTime;
-            transform.position = Vector3.Lerp(positionWhenCaught, moveToPosition, t);
 
-            if (caughtTime + outWaterTime + timeBeforeDestroy <= Time.time)
-            {
-                Finish();
-            }
-        }
+		// TODO : stuck player during catch animation
+		if (this.state == FishState.CAUGHT) {
+			//Move to moveToPosition in outWaterTime seconds
+			float t = (Time.time - caughtTime) / outWaterTime;
+			transform.position = Vector3.Lerp(positionWhenHooked, moveToPosition, t);
 
-        // Only move if we're not hooked
-        // Use the rigidbody to handle movement
-        this.rigid.linearVelocity = this.state == FishState.SWIMING ? transform.right * Data.Speed : Vector3.zero;
+			if (caughtTime + outWaterTime + timeBeforeDestroy <= Time.time) {
+				Finish();
+			}
+		}
+
+		// Only colide with harpoon when swiming
+		this.colliderRef.enabled = this.state == FishState.SWIMING;
+
+		// Only move if we're swiming
+		// Use the rigidbody to handle movement
+		this.rigid.linearVelocity = this.state == FishState.SWIMING ? transform.right * Data.Speed : Vector3.zero;
 	}
 }
