@@ -5,6 +5,9 @@ public class UIAnimation : MonoBehaviour
 {
     private float startTime;
 
+    [SerializeField] private ParticleSystem particles;
+    [SerializeField] private float particleEmissionRate;
+
     public void Reset()
     {
         StopAllCoroutines();
@@ -20,6 +23,10 @@ public class UIAnimation : MonoBehaviour
     private IEnumerator RotateOverTime(float seconds, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        if (particles != null) {
+            var particleEmission = particles.emission;
+            particleEmission.rateOverTime = particleEmissionRate;
+        }
         startTime = Time.time;
         float elapsed = 0f;
 
@@ -31,6 +38,10 @@ public class UIAnimation : MonoBehaviour
             yield return null;
         }
 
+        if (particles != null) {
+            var particleEmission = particles.emission;
+            particleEmission.rateOverTime = 0.0f;
+        }
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         gameObject.SetActive(false);
     }
