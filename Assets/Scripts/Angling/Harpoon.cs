@@ -14,10 +14,19 @@ public class Harpoon : MonoBehaviour
     private float currentAngle;
     private LayerMask fishMask = 1 << 6;
 
+    private void OnEnable()
+    {
+        projectile.OnHitTarget.AddListener(ProjectileHit);
+    }
+
+    private void OnDisable()
+    {
+        projectile.OnHitTarget.RemoveListener(ProjectileHit);
+    }
+
     public void Initialize()
     {
         target.SetActive(true);
-        projectile.OnHitTarget.AddListener(ProjectileHit);
     }
 
     public void Reset()
