@@ -32,7 +32,7 @@ public class SliderFadeColor : MonoBehaviour
     {
         if (particleSystemToUse != null) {
             var emission = particleSystemToUse.emission;
-            emission.rateOverTime = Mathf.Max(((slider.value - oldValue) / Time.deltaTime) * particleCoeff, 0.0f);
+            emission.rateOverTime = FXManager.Instance.particlesEnabled ? Mathf.Max(((slider.value - oldValue) / Time.deltaTime) * particleCoeff, 0.0f) : 0.0f;
         }
         oldValue = slider.value;
     }

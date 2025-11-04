@@ -25,7 +25,7 @@ public class UIAnimation : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if (particles != null) {
             var particleEmission = particles.emission;
-            particleEmission.rateOverTime = particleEmissionRate;
+            particleEmission.rateOverTime = FXManager.Instance.particlesEnabled ? particleEmissionRate : 0.0f;
         }
         startTime = Time.time;
         float elapsed = 0f;

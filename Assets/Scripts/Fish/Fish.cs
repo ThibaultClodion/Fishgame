@@ -128,7 +128,7 @@ public class Fish : MonoBehaviour
 
 		// Change emission depending on state
 		var particleEmission = this.particles.emission;
-		particleEmission.rateOverTime = Data.Speed * (this.state == FishState.SWIMING ? 1.0f : (this.state == FishState.HOOKED ? 10.0f : 0.0f));
+		particleEmission.rateOverTime = FXManager.Instance.particlesEnabled ? Data.Speed * (this.state == FishState.SWIMING ? 1.0f : (this.state == FishState.HOOKED ? 10.0f : 0.0f)) : 0.0f;
 
 		// Only colide with harpoon when swiming
 		this.colliderRef.enabled = this.state == FishState.SWIMING;
