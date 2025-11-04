@@ -19,6 +19,7 @@ public class Fish : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
 	private Rigidbody2D rigid;
 	private Collider2D colliderRef;
+	private ParticleSystem particles;
 
 	// Catch animation parameters
 	private Vector3 positionWhenHooked;
@@ -35,6 +36,7 @@ public class Fish : MonoBehaviour
 		this.spriteRenderer = GetComponent<SpriteRenderer>();
 		this.rigid = GetComponent<Rigidbody2D>();
 		this.colliderRef = GetComponent<Collider2D>();
+		this.particles = GetComponent<ParticleSystem>();
 
 		this.state = FishState.SWIMING;
 
@@ -123,6 +125,10 @@ public class Fish : MonoBehaviour
 				Finish();
 			}
 		}
+
+		// Change emission depending on state
+		var particleEmission = this.particles.emission;
+		particleEmission.rateOverTime = Data.Speed * (this.state == FishState.SWIMING ? 1.0f : (this.state == FishState.HOOKED ? 10.0f : 0.0f));
 
 		// Only colide with harpoon when swiming
 		this.colliderRef.enabled = this.state == FishState.SWIMING;
