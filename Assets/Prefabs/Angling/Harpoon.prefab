@@ -50,6 +50,9 @@ MonoBehaviour:
   projectile: {fileID: 8937881571369376211}
   launchPoint: {fileID: 5395091017240524193}
   projectileSpeed: 20
+  harpoonShootSFX: {fileID: 8300000, guid: fe51e34c9b2e0974091155cb1a614b77, type: 3}
+  harpoonHookSFX: {fileID: 8300000, guid: 67477fba6c6cb894b8b4cc8da8069c9d, type: 3}
+  harpoonMissSFX: {fileID: 8300000, guid: 4eae9e11df7cbbd49a5b6cf98598fb00, type: 3}
   target: {fileID: 3817728279792945388}
   angleLimit: 70
 --- !u!1 &3817728279792945388

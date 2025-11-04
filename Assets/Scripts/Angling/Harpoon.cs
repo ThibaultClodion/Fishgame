@@ -8,6 +8,11 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     private bool isLaunching = false;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip harpoonShootSFX;
+    [SerializeField] private AudioClip harpoonHookSFX;
+    [SerializeField] private AudioClip harpoonMissSFX;
+
     [Header("References")]
     [SerializeField] private GameObject target;
     [SerializeField] private float angleLimit;
@@ -57,6 +62,7 @@ public class Harpoon : MonoBehaviour
 
         Vector2 aimingDirection = Quaternion.Euler(0, 0, currentAngle) * Vector2.down;
 
+        AudioManager.Instance.PlaySFX(harpoonShootSFX);
         projectile.Launch(aimingDirection, projectileSpeed);
     }
 
@@ -64,11 +70,13 @@ public class Harpoon : MonoBehaviour
     {
         if (fish == null)
         {
+            AudioManager.Instance.PlaySFX(harpoonMissSFX);
             projectile.ResetProjectile(launchPoint);
             isLaunching = false;
         }
         else
         {
+            AudioManager.Instance.PlaySFX(harpoonHookSFX);
             GamepadVibration.Instance.Vibration(0.5f, 0.5f, 0.2f);
             fish.Hook();
             GameManager.Instance.HookFish(fish);

@@ -5,6 +5,7 @@ public class UIAnimation : MonoBehaviour
 {
     private float startTime;
 
+    [SerializeField] private AudioClip spinSound;
     [SerializeField] private ParticleSystem particles;
     [SerializeField] private float particleEmissionRate;
 
@@ -27,6 +28,8 @@ public class UIAnimation : MonoBehaviour
             var particleEmission = particles.emission;
             particleEmission.rateOverTime = FXManager.Instance.particlesEnabled ? particleEmissionRate : 0.0f;
         }
+
+        AudioManager.Instance.PlaySFX(spinSound);
         startTime = Time.time;
         float elapsed = 0f;
 

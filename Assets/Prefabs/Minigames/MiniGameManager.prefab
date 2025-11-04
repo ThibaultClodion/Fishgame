@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4ea4d8026baae4491a463d948ade53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGameSuccessSFX: {fileID: 8300000, guid: 28821d56c3e7814458d94fe700d25515, type: 3}
+  miniGameFailureSFX: {fileID: 8300000, guid: 23fbca13d189f5d4cbfa38aa27e6023b, type: 3}
   miniGames:
   - {fileID: 4745116713554971131}
   - {fileID: 2415119539132299156}

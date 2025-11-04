@@ -5856,6 +5856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5ca861ff7fa98479e536a21456f023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spinSound: {fileID: 8300000, guid: 8793e5000372231459a91bd1eed68499, type: 3}
   particles: {fileID: 534785712}
   particleEmissionRate: 20
 --- !u!1 &710286936

@@ -4,6 +4,10 @@ using TMPro;
 
 public class MiniGameManager : MonoBehaviour
 {
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip miniGameSuccessSFX;
+    [SerializeField] private AudioClip miniGameFailureSFX;
+
     [Header("References")]
     [SerializeField] private BaseMiniGame[] miniGames;
     [SerializeField] private GameObject commonContainer;
@@ -43,6 +47,15 @@ public class MiniGameManager : MonoBehaviour
         miniGames[currentMiniGameIndex].AddToProgressionCallback = null;
         currentMiniGameIndex = -1;
         commonContainer.SetActive(true);
+
+        if(isCompleted)
+        {
+            AudioManager.Instance.PlaySFX(miniGameSuccessSFX);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(miniGameFailureSFX);
+        }
 
         GameManager.Instance.EndMiniGame(isCompleted);
     }
