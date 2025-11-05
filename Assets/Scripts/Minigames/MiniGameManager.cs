@@ -60,17 +60,22 @@ public class MiniGameManager : MonoBehaviour
         GameManager.Instance.EndMiniGame(isCompleted);
     }
 
-    private void AddToProgression(float value)
+    // Returns if the minigame ended or not
+    private bool AddToProgression(float value)
     {
         progressionSlider.value += value;
 
         if(progressionSlider.value >= 1f)
         {
             EndMiniGame(true);
+            return true;
         }
         else if(progressionSlider.value <= 0f)
         {
             EndMiniGame(false);
+            return true;
         }
+
+        return false;
     }
 }

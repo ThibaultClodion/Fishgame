@@ -12,6 +12,15 @@ public class UIAnimation : MonoBehaviour
     public void Reset()
     {
         StopAllCoroutines();
+        StopAnimation();
+    }
+
+    private void StopAnimation()
+    {
+        if (particles != null) {
+            var particleEmission = particles.emission;
+            particleEmission.rateOverTime = 0.0f;
+        }
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         gameObject.SetActive(false);
     }
@@ -41,11 +50,6 @@ public class UIAnimation : MonoBehaviour
             yield return null;
         }
 
-        if (particles != null) {
-            var particleEmission = particles.emission;
-            particleEmission.rateOverTime = 0.0f;
-        }
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        gameObject.SetActive(false);
+        StopAnimation();
     }
 }

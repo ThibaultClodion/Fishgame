@@ -41,6 +41,16 @@ public class QTEMiniGame : BaseMiniGame
 	[Range(0.0f, 1.0f)]
 	private float progressionAutoDecreaseRate = 0.01f;
 
+	[Header("QTE Sound Settings")]
+	[SerializeField]
+	private AudioClip sucessSound;
+	[SerializeField]
+	private AudioClip failSound;
+	[SerializeField]
+	private AudioClip hitSound;
+	[SerializeField]
+	private AudioClip missSound;
+
 	[Header("Object References")]
 	[SerializeField]
 	private Slider timeSlider;
@@ -111,7 +121,9 @@ public class QTEMiniGame : BaseMiniGame
 	}
 
 	private void ButtonOutcome(bool success) {
-		AddToProgression(success ? progressionIncrease : -progressionDecrease);
+		bool ended = AddToProgression(success ? progressionIncrease : -progressionDecrease);
+		if (!ended)
+			AudioManager.Instance.PlaySFX(success ? sucessSound : missSound);
 		ClearButton();
 		nextButtonTime = Mathf.Min(nextButtonTime, Time.time + nextButtonDuration);
 	}
@@ -148,10 +160,13 @@ public class QTEMiniGame : BaseMiniGame
 		}
 
 		if (mashButton) {
-			if (pressedRightButton)
+			if (pressedRightButton) {
 				mashSlider.value += buttonMashIncrease;
-			else if (pressedOtherButton)
+				AudioManager.Instance.PlaySFX(hitSound);
+			} else if (pressedOtherButton) {
 				mashSlider.value -= buttonMashIncrease;
+				AudioManager.Instance.PlaySFX(missSound);
+			}
 
 			if (mashSlider.value >= 1.0f) {
 				ButtonOutcome(true);

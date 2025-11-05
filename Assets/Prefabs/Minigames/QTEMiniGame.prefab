@@ -61,6 +61,10 @@ MonoBehaviour:
   progressionIncrease: 0.25
   progressionDecrease: 0.1
   progressionAutoDecreaseRate: 0.01
+  sucessSound: {fileID: 8300000, guid: efcd61b3948d00e438b61f39862ac010, type: 3}
+  failSound: {fileID: 8300000, guid: 4c7695a630de4684eb645fcea3b5f018, type: 3}
+  hitSound: {fileID: 8300000, guid: fe51e34c9b2e0974091155cb1a614b77, type: 3}
+  missSound: {fileID: 8300000, guid: 4c7695a630de4684eb645fcea3b5f018, type: 3}
   timeSlider: {fileID: 5180054095687211735}
   keyImage: {fileID: 755242460896051119}
   mashSubgroup: {fileID: 8769223731055027185}

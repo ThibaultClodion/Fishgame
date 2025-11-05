@@ -2,19 +2,19 @@ using UnityEngine;
 
 public abstract class BaseMiniGame : MonoBehaviour
 {
-    public delegate void AddToProgressionDelegate(float value);
+    public delegate bool AddToProgressionDelegate(float value);
     // Not an event because there is always only one
     public AddToProgressionDelegate AddToProgressionCallback;
 
     // Wrap the callback to avoid NPEs (shouldn't happen but just in case)
-    public void AddToProgression(float value)
+    public bool AddToProgression(float value)
     {
         if (AddToProgressionCallback == null)
         {
             Debug.LogError("Tried to add to progression when CB was null...");
-            return;
+            return false;
         }
-        AddToProgressionCallback(value);
+        return AddToProgressionCallback(value);
     }
 
     public virtual void Initialize(FishData data)
