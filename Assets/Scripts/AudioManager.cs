@@ -10,6 +10,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
+    [HideInInspector] public float MasterVolume = 1.0f;
+    [HideInInspector] public float MusicVolume = 1.0f;
+    [HideInInspector] public float SFXVolume = 1.0f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -38,7 +42,8 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        musicSource.volume = volume;
+        MusicVolume = volume;
+        musicSource.volume = MasterVolume * MusicVolume;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -50,6 +55,7 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
-        sfxSource.volume = volume;
+        SFXVolume = volume;
+        sfxSource.volume = MasterVolume * SFXVolume;
     }
 }
