@@ -4,7 +4,7 @@ using UnityEngine;
 public class FishType : ScriptableObject
 {
 	[SerializeField]
-	private string fishName;
+	public string fishName;
 	[SerializeField]
     public string description;
 	[SerializeField]

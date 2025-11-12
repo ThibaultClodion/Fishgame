@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
-    [HideInInspector] public float MasterVolume = 1.0f;
-    [HideInInspector] public float MusicVolume = 1.0f;
-    [HideInInspector] public float SFXVolume = 1.0f;
+    [SerializeField] private AudioMixer masterMixer;
+
+    [Header("Default volumes")]
+    public float MasterVolume = 1.0f;
+    public float MusicVolume = 1.0f;
+    public float SFXVolume = 1.0f;
 
     private void Awake()
     {
@@ -29,6 +33,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        SetMasterVolume(MasterVolume);
+        SetSFXVolume(SFXVolume);
+        SetMusicVolume(MusicVolume);
         StartMusicLoop();
     }
 
@@ -40,12 +47,6 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void SetMusicVolume(float volume)
-    {
-        MusicVolume = volume;
-        musicSource.volume = MasterVolume * MusicVolume;
-    }
-
     public void PlaySFX(AudioClip clip)
     {
         if(clip == null) return;
@@ -53,9 +54,27 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
+    // Volume in linear 0-1, map directly to dBs inside of the mixer to have exponential linear scaling
+    // https://www.dr-lex.be/info-stuff/volumecontrols.html
+    private void SetMixerGroupVolume(string groupName, float volume) {
+        masterMixer.SetFloat(groupName, -(1.0f-volume) * 80);
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        MasterVolume = volume;
+        SetMixerGroupVolume("MasterVolume", volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicVolume = volume;
+        SetMixerGroupVolume("MusicVolume", volume);
+    }
+
     public void SetSFXVolume(float volume)
     {
         SFXVolume = volume;
-        sfxSource.volume = MasterVolume * SFXVolume;
+        SetMixerGroupVolume("SFXVolume", volume);
     }
 }

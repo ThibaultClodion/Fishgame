@@ -26,11 +26,11 @@ public class FishDisplay : MonoBehaviour
         }
         else
         {
-            fishNameText.text = fishType.name;
+            fishNameText.text = fishType.fishName;
             fishImage.sprite = fishType.sprite;
             fishDescriptionText.text = fishType.description;
-            fishMaxSizeText.text = $"Max Size: {bestiaryEntry.MaxSize} cm";
-            fishMinSizeText.text = $"Min Size: {bestiaryEntry.MinSize} cm";
+            fishMaxSizeText.text = $"Max Size: {bestiaryEntry.MaxSize*5.0f:0.00} cm";
+            fishMinSizeText.text = $"Min Size: {bestiaryEntry.MinSize*5.0f:0.00} cm";
             fishNbCatchedText.text = $"Caught: {bestiaryEntry.NbCatched}";
         }
     }

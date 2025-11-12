@@ -91,9 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dbbb5f86b8fa1478368e79881752dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishTypes:
-  - {fileID: 11400000, guid: 842599ef5e70bbb43b0ea6d4d94d41d0, type: 2}
-  - {fileID: 11400000, guid: 3e1d1df7bbf037f4caafd276498c8e85, type: 2}
+  fishBank: {fileID: 11400000, guid: 30d4af6a5f4859846a6fab73a74d588e, type: 2}
   fishPrefab: {fileID: 4899356576018578267, guid: 7b15600307138fd4babaaecadd5bf110, type: 3}
   fishSwimDirection: {x: 1, y: 0}
   spawnTime: 8000

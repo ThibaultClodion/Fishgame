@@ -22,11 +22,7 @@ public class AudioOptions : MonoBehaviour
 
     private void SetMasterVolume(float volume)
     {
-        AudioManager.Instance.MasterVolume = volume;
-
-        // Update music and SFX volumes to reflect new master volume
-        AudioManager.Instance.SetMusicVolume(AudioManager.Instance.MusicVolume);
-        AudioManager.Instance.SetSFXVolume(AudioManager.Instance.SFXVolume);
+        AudioManager.Instance.SetMasterVolume(volume);
     }
 
     private void SetMusicVolume(float volume)

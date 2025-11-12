@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2736a311fdc7faa4ba7fe3f870122bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanVibrate: 1
 --- !u!1 &148682634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3039477511205810385, guid: 07ac4860f2879a2469f4f88aa747e9d3, type: 3}
@@ -6860,10 +6861,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 710286937}
     m_Modifications:
+    - target: {fileID: 3076134232984319432, guid: 4bc68b000d315b246b6f305bfa88c489, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3938566623848101672, guid: ded9d7483c736404296dfe6747e528c9, type: 2}
     - target: {fileID: 3516741380084566944, guid: 4bc68b000d315b246b6f305bfa88c489, type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8209362533699083319, guid: 4bc68b000d315b246b6f305bfa88c489, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3046213357001522272, guid: ded9d7483c736404296dfe6747e528c9, type: 2}
     - target: {fileID: 8737919273115161128, guid: 4bc68b000d315b246b6f305bfa88c489, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

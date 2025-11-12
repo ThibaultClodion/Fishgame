@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c11356b240dc4a878d6a651a3011c, type: 3}
   m_Name: TestFish
   m_EditorClassIdentifier: 
-  fishName: Testing Fish 1
-  description: Fish that is testing for real
+  fishName: Handrawn Fish
+  description: A fish that looks like it has been drawn in Paint in about 46 seconds...
   difficulty: {x: 0.5, y: 1}
   excludedMinigames: 0
   sprite: {fileID: 8143951636752000675, guid: 6a88daeb45ad00b4081ba592eafcb648, type: 3}

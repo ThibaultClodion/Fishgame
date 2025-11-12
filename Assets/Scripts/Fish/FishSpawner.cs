@@ -5,8 +5,8 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour
 {
 	[SerializeField]
-	[Tooltip("All the possible fish type spawns")]
-	private FishType[] fishTypes;
+	[Tooltip("The bank fish will be pulled from to be spawned")]
+	private FishBank fishBank;
 
 	[Header("Spawned Fish Settings")]
 	[SerializeField]
@@ -34,9 +34,6 @@ public class FishSpawner : MonoBehaviour
 	// Stores the next spawn time
 	private float nextSpawnTime;
 
-	// Random instance for the fish type
-	private RealRandom random = new RealRandom(2);
-
 	void Spawn() {
         // Sanity Check
         if (fishPrefab == null) {
@@ -50,8 +47,8 @@ public class FishSpawner : MonoBehaviour
 									Random.Range(transform.position.y - boxCollider.size.y/2.0f, transform.position.y + boxCollider.size.y/2.0f))
 						+ boxCollider.offset;
 
-		// Pick a random FishType
-		FishType type = fishTypes[this.random.Range(0, fishTypes.Length)];
+		// Pick a random FishBank
+		FishType type = fishBank.getRandomType();
 
 		// Create a FishData from it
 		FishData data = type.GenerateFishData();

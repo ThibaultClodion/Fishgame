@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c11356b240dc4a878d6a651a3011c, type: 3}
   m_Name: TestFish2
   m_EditorClassIdentifier: 
-  fishName: Fish Test 2
-  description: The real testing fish
+  fishName: Real Fish
+  description: This fish is totally different from the other ones, it's like really
+    different... I swear... The sprite is a little different... trust me.. please...
   difficulty: {x: 0, y: 0.5}
   excludedMinigames: 0
   sprite: {fileID: -2114686101538272709, guid: 4a536d749fd70c74b8f0516700cbaff3, type: 3}

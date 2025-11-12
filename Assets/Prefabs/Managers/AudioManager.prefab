@@ -179,6 +179,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53c6f7e171586fb4587f4b61bf473352, type: 3}
   musicSource: {fileID: 3076134232984319432}
   sfxSource: {fileID: 8209362533699083319}
+  masterMixer: {fileID: 24100000, guid: ded9d7483c736404296dfe6747e528c9, type: 2}
+  MasterVolume: 0.8
+  MusicVolume: 1
+  SFXVolume: 1
 --- !u!1 &8941635449865836990
 GameObject:
   m_ObjectHideFlags: 0
