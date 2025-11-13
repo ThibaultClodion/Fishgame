@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartIdle();
-        InputManager.Instance.SouthButtonAction.performed += StartAngling;
+        InputManager.Instance.LeftJoystick.started += SwitchAngling;
+        InputManager.Instance.LeftJoystick.performed += SwitchAngling;
+        InputManager.Instance.LeftJoystick.canceled += SwitchAngling;
         InputManager.Instance.StartButtonAction.performed += OpenMainMenu;
         OpenMainMenu(new InputAction.CallbackContext());
     }
@@ -59,13 +61,20 @@ public class GameManager : MonoBehaviour
         idleCanvas.SetActive(false);
     }
 
-    private void StartAngling(InputAction.CallbackContext ctx)
+    private void SwitchAngling(InputAction.CallbackContext ctx)
     {
-        if (State != PlayerState.IDLE)
+        if (State == PlayerState.IDLE && ctx.ReadValue<Vector2>() != Vector2.zero)
         {
-            return;
+            StartAngling();
         }
+        else if (State == PlayerState.ANGLING && ctx.ReadValue<Vector2>() == Vector2.zero)
+        {
+            StopAngling();
+        }
+    }
 
+    private void StartAngling()
+    {
         StopIdle();     
         angler.gameObject.SetActive(true);
         State = PlayerState.ANGLING;
@@ -73,11 +82,6 @@ public class GameManager : MonoBehaviour
 
     public void StopAngling()
     {
-        if (State != PlayerState.ANGLING)
-        {
-            return;
-        }
-
         angler.gameObject.SetActive(false);
         StartIdle();
     }
