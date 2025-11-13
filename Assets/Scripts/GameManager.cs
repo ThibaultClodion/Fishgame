@@ -63,11 +63,13 @@ public class GameManager : MonoBehaviour
 
     private void SwitchAngling(InputAction.CallbackContext ctx)
     {
-        if (State == PlayerState.IDLE && ctx.ReadValue<Vector2>() != Vector2.zero)
+        Vector2 stickPosition = ctx.ReadValue<Vector2>();
+        bool aimingDown = Vector2.Dot(stickPosition, Vector2.down) > 0.0f;
+        if (State == PlayerState.IDLE && aimingDown)
         {
             StartAngling();
         }
-        else if (State == PlayerState.ANGLING && ctx.ReadValue<Vector2>() == Vector2.zero)
+        else if (State == PlayerState.ANGLING && !aimingDown)
         {
             StopAngling();
         }
