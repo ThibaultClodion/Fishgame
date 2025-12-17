@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c11356b240dc4a878d6a651a3011c, type: 3}
   m_Name: TestFish2
   m_EditorClassIdentifier: 
-  fishName: Real Fish
+  fishName: Shark
   description: This fish is totally different from the other ones, it's like really
     different... I swear... The sprite is a little different... trust me.. please...
   difficulty: {x: 0, y: 0.5}

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DynamicKeyImage : MonoBehaviour
 {
 	private Image image;
+	[SerializeField] Sprite[] telecomandSprites;
 
 	[SerializeField]
 	private InputManager.KeyType type;
@@ -21,7 +22,16 @@ public class DynamicKeyImage : MonoBehaviour
 		Type = InputManager.Instance.KeyTypes[action];
 	}
 
-	private void Awake() {
+	public void SetTelecomandAction(int index) {
+		if (image == null)
+			image = GetComponent<Image>();
+
+		if (index >= 0 && index < telecomandSprites.Length) {
+			image.sprite = telecomandSprites[index];
+		}
+    }
+
+    private void Awake() {
 		// Update image for the first time (potentially double update)
 		UpdateImage(InputManager.Instance.UsingKeyboard);
 	}

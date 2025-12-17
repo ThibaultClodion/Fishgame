@@ -87,16 +87,16 @@ public class SerialHandler : MonoBehaviour
             case 0x19: Debug.Log("IR: EQ"); break;
             case 0x0D: Debug.Log("IR: ST/REPT"); break;
 
-            case 0x16: Debug.Log("IR: KEY 0"); break;
-            case 0x0C: Debug.Log("IR: KEY 1"); break;
-            case 0x18: Debug.Log("IR: KEY 2"); break;
-            case 0x5E: Debug.Log("IR: KEY 3"); break;
-            case 0x08: Debug.Log("IR: KEY 4"); break;
-            case 0x1C: Debug.Log("IR: KEY 5"); break;
-            case 0x5A: Debug.Log("IR: KEY 6"); break;
-            case 0x42: Debug.Log("IR: KEY 7"); break;
-            case 0x52: Debug.Log("IR: KEY 8"); break;
-            case 0x4A: Debug.Log("IR: KEY 9"); break;
+            case 0x16: InputManager.Instance.TelecomandActions[0] = true; break;
+            case 0x0C: InputManager.Instance.TelecomandActions[1] = true; break;
+            case 0x18: InputManager.Instance.TelecomandActions[2] = true; break;
+            case 0x5E: InputManager.Instance.TelecomandActions[3] = true; break;
+            case 0x08: InputManager.Instance.TelecomandActions[4] = true; break;
+            case 0x1C: InputManager.Instance.TelecomandActions[5] = true; break;
+            case 0x5A: InputManager.Instance.TelecomandActions[6] = true; break;
+            case 0x42: InputManager.Instance.TelecomandActions[7] = true; break;
+            case 0x52: InputManager.Instance.TelecomandActions[8] = true; break;
+            case 0x4A: InputManager.Instance.TelecomandActions[9] = true; break;
 
             default:
                 Debug.LogWarning($"Touche IR inconnue reçue: 0x{commandCode:X2}");

@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
 
     // Array of all buttons, used for QTE
     public InputAction[] ButtonActions { get; private set; }
+    public bool[] TelecomandActions;
 
     private PlayerInput playerInput;
 
@@ -97,6 +98,12 @@ public class InputManager : MonoBehaviour
         ButtonActions[2] = SouthButtonAction;
         ButtonActions[3] = WestButtonAction;
 
+        // Fill telecomand actions
+        TelecomandActions = new bool[10];
+        for (int i=0;i<TelecomandActions.Length;i++)
+            TelecomandActions[i] = false;
+
+
         // Add Action to input mapping
         KeyTypes = new Dictionary<InputAction, KeyType>();
         KeyTypes.Add(RightJoystick, KeyType.RightJoystick);
@@ -123,5 +130,12 @@ public class InputManager : MonoBehaviour
             if (OnInputModeChangeEvent != null)
                 OnInputModeChangeEvent(newUsingKeyboard);
         }
+    }
+
+    private void LateUpdate()
+    {
+        //Reset Telecomand actions
+        for (int i=0;i<TelecomandActions.Length;i++)
+            TelecomandActions[i] = false;
     }
 }

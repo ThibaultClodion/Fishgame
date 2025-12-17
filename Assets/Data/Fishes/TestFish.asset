@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c11356b240dc4a878d6a651a3011c, type: 3}
   m_Name: TestFish
   m_EditorClassIdentifier: 
-  fishName: Handrawn Fish
+  fishName: Bar
   description: A fish that looks like it has been drawn in Paint in about 46 seconds...
   difficulty: {x: 0.5, y: 1}
   excludedMinigames: 0

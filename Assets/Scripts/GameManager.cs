@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.LeftJoystick.canceled += SwitchAngling;
         InputManager.Instance.StartButtonAction.performed += OpenMainMenu;
         OpenMainMenu(new InputAction.CallbackContext());
+
+        // LCD Setup
+        LCDDisplayer.Instance.Clear();
+        LCDDisplayer.Instance.DisplayText(0,0, "FishGame");
+        LCDDisplayer.Instance.DisplayText(0,1, "Catch a fish !");
     }
 
     private void StartIdle()
@@ -98,6 +103,11 @@ public class GameManager : MonoBehaviour
         miniGameManager.gameObject.SetActive(true);
         miniGameManager.StartRandomMiniGame(currentFish);
         State = PlayerState.MINIGAME;
+
+        // Display LCD information
+        LCDDisplayer.Instance.Clear();
+        LCDDisplayer.Instance.DisplayText(0, 0, "Try to press");
+        LCDDisplayer.Instance.DisplayText(0, 1, "The good number");
     }
 
     public void EndMiniGame(bool isCompleted)
@@ -118,12 +128,22 @@ public class GameManager : MonoBehaviour
             {
                 catchStar.gameObject.SetActive(true);
                 catchStar.StartRotation(spinTime, outWaterTime);
+
+                // Display LCD information
+                LCDDisplayer.Instance.Clear();
+                LCDDisplayer.Instance.DisplayText(0,0, "Caught a " + fishData.Name);
+                LCDDisplayer.Instance.DisplayText(0,1, "Nb caught: " + Bestiary.GetBestiaryEntry(fishData.Type).NbCatched);
             }
         }
         else
         {
             currentFish.UnHook();
             currentFish = null;
+
+            // Display LCD information
+            LCDDisplayer.Instance.Clear();
+            LCDDisplayer.Instance.DisplayText(0, 0, "You are a Looser");
+            LCDDisplayer.Instance.DisplayText(0, 1, "Retry");
         }
 
         StartIdle();

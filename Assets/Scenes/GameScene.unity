@@ -7180,9 +7180,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 673780208}
     m_Modifications:
+    - target: {fileID: 433350962910164922, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734320459321275187, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'miniGames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8890852649286729343}
     - target: {fileID: 3796643260489356182, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_Name
       value: MiniGameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: telecomandSprites.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8223070234224485438, guid: 373761e6f2fa98f4b9db9fafe027e146, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1959093419718945344, guid: dbfb5953e62c15c44b2c4ad9e4ccea9e, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7025592366544949497, guid: 857571280ae101a41bde9010fa762e4d, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -4499874515739484844, guid: 3298dbc65b803b74696070bd602f09b1, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -999092148098739313, guid: 40d00c4236dfcb04b84d3c2fa18fc338, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -6629337003541274334, guid: 96f7fa710a79cb944bf30e289bcfa771, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: -5459725254903225871, guid: e4d72d506f43eda4682b3386f08ed1bf, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: -4240062177936040542, guid: 55018fbc8205ec1498c3cb7922c5ed42, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: 851603616745863846, guid: 3cfe5f5ca4841504ab151b65db267e10, type: 3}
+    - target: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: 'telecomandSprites.Array.data[9]'
+      value: 
+      objectReference: {fileID: 8741429343988154102, guid: 9d19e75b988bdc94e8b462aeed984f25, type: 3}
+    - target: {fileID: 8145478651872135771, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      propertyPath: m_Name
+      value: TelecomandMiniGame
       objectReference: {fileID: 0}
     - target: {fileID: 9110411897615873624, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
       propertyPath: m_Pivot.x
@@ -7264,11 +7320,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 433350962910164922, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 8448660153098743749, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+    - {fileID: 6236682454696807029, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+    - {fileID: 9155693561188061480, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8145478651872135771, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8890852649286729343}
   m_SourcePrefab: {fileID: 100100000, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+--- !u!114 &8890852649286729338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3367159222280000722, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8890852649286729339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4016009204936949649, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8890852649286729340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 714399283440027319, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8890852649286729341 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4932031591468950479, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c0bff7fab5d824fa66d4bca607f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8890852649286729342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8145478651872135771, guid: 3c6c50fda2a476845ad45849891396df, type: 3}
+  m_PrefabInstance: {fileID: 8890852649286729337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8890852649286729343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890852649286729342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839db6cbea893614f84f6d4f54ca7362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonFailTime: 1.2
+  timeBetweenButtonsAfterPress: 1.5
+  buttonFailTimeRandom: 0.2
+  timeBetweenButtonsRandom: 0.8
+  buttonMashProbablity: 0.3
+  buttonMashDecrease: 0.2
+  buttonMashIncrease: 0.17
+  progressionIncrease: 0.25
+  progressionDecrease: 0.1
+  progressionAutoDecreaseRate: 0.01
+  sucessSound: {fileID: 8300000, guid: efcd61b3948d00e438b61f39862ac010, type: 3}
+  failSound: {fileID: 8300000, guid: 4c7695a630de4684eb645fcea3b5f018, type: 3}
+  hitSound: {fileID: 8300000, guid: fe51e34c9b2e0974091155cb1a614b77, type: 3}
+  missSound: {fileID: 8300000, guid: 4c7695a630de4684eb645fcea3b5f018, type: 3}
+  timeSlider: {fileID: 8890852649286729340}
+  keyImage: {fileID: 8890852649286729341}
+  mashSubgroup: {fileID: 8890852649286729339}
+  mashSlider: {fileID: 8890852649286729338}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
