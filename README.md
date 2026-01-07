@@ -1,2 +1,2 @@
 # Fishgame
-Un jeu de pêche
+Small fishing game made in Unity 6.
